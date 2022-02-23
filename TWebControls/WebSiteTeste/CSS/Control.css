@@ -1,0 +1,299 @@
+﻿.error
+{
+    border-top: 1px solid #f7d0d0;
+    border-bottom: 1px solid #c87676;
+    background-color: #f3c7c7;
+    background: -webkit-gradient(linear, left top, left bottom, from(#f3c7c7), to(#eea2a2));
+    background: -moz-linear-gradient(top, #f3c7c7, #eea2a2);
+    background: linear-gradient(top, #f3c7c7, #eea2a2);
+    color: #d12f19;
+}
+
+input.error
+{
+    border: thin solid #FF0000;
+    background-color: #FFFFBB;
+}
+
+.okClass
+{
+    background-color: Green;
+}
+
+.errorHighlight
+{
+    border: 2px solid #CC0000;
+}
+.textinput
+{
+    border: 1px silver solid;
+}
+
+/* css for timepicker */
+.ui-timepicker-div .ui-widget-header
+{
+    margin-bottom: 8px;
+}
+.ui-timepicker-div dl
+{
+    text-align: left;
+}
+.ui-timepicker-div dl dt
+{
+    height: 25px;
+    margin-bottom: -25px;
+}
+.ui-timepicker-div dl dd
+{
+    margin: 0 10px 10px 65px;
+}
+.ui-timepicker-div td
+{
+    font-size: 90%;
+}
+.ui-tpicker-grid-label
+{
+    background: none;
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+
+/*  ---------- CSS PÁGINA PRINCIPAL ---------- */
+
+.divContainer label
+{
+    display: block;
+}
+
+.labelClass
+{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+.requiredClass
+{
+    color: #F00F00;
+}
+
+input[type="text"], select, textarea, input.error
+{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    padding: 2px 2px;
+    border: 1px solid #6CA6CD;
+    margin: 2px 0 5px 5px;
+    clear: both;
+    display: inline;
+}
+
+/* ---------- FIM CSS PÁGINA PRINCIPAL ---------- */
+
+/* ---------- BALÃO MENSAGEM DE ERRO ---------- */
+div.error
+{
+    border-bottom: 1px solid #f7d1d1;
+    border-top: 1px solid #f7d1d1;
+    border-right: 1px solid #f7d1d1;
+    background-color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: #b40000;
+    padding: 3px 3px 3px 5px;
+}
+
+.message
+{
+    background-image: url(images/setaValidation.png);
+    background-repeat: no-repeat;
+    padding-left: 11px;
+}
+
+input.error
+{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    padding: 2px 2px;
+    border: 1px solid #6CA6CD;
+    margin: 2px 0 5px 5px;
+    clear: both;
+    display: inline;
+    background-color: #fbe8e8;
+}
+
+/* ---------- FIM BALÃO MENSAGEM DE ERRO ---------- */
+
+/* ---------- TAMANHO DOS CAMPOS INPUT TEXT---------- */
+.cp_Data
+{
+    width: 70px;
+}
+
+.cp_DataHora
+{
+    width: 105px;
+}
+
+.cp_Cpf
+{
+    width: 100px;
+}
+
+.cp_Cnpj
+{
+    width: 120px;
+}
+
+.cp_Hora
+{
+    width: 40px;
+}
+
+.cp_Ano
+{
+    width: 35px;
+}
+
+.cp_MesAno
+{
+    width: 55px;
+}
+
+.cp_Telefone
+{
+    width: 95px;
+}
+
+.cp_Cep
+{
+    width: 70px;
+}
+
+.cp_1015
+{
+    width: 110px;
+}
+
+.cp_1620
+{
+    width: 145px;
+}
+
+.cp_2130
+{
+    width: 210px;
+}
+
+.cp_3140
+{
+    width: 285px;
+}
+
+.cp_4150
+{
+    width: 2355px;
+}
+
+.cp_5160
+{
+    width: 425px;
+}
+
+.cp_6170
+{
+    width: 500px;
+}
+
+.cp_7180
+{
+    width: 570px;
+}
+
+.cp_8190
+{
+    width: 640px;
+}
+
+.cp_9199
+{
+    width: 710px;
+}
+
+.cp_100
+{
+    width: 720px;
+}
+
+.cp_150
+{
+    width: 880px;
+}
+
+/* ---------- FIM TAMANHO DOS CAMPOS INPUT TEXT ---------- */
+
+/* ---------- MESSAGE BOX ---------- */
+
+.message
+{
+    color: Black;
+}
+
+
+.conteudo_Mensagem
+{
+    margin-right:15px;
+    padding-left:15px;
+    float:left;
+    margin-top:15px;
+}
+
+.img_Confirmacao
+{
+    width:50px;
+    background-image: url(DefaultImages/confirm.gif);
+    background-repeat:no-repeat;
+    float:left;
+    margin:10px 10px 10px 10px;
+}
+
+.img_Alerta
+{
+    width:50px;
+    background-image: url(DefaultImages/warning.gif);
+    background-repeat:no-repeat;
+    float:left;
+    margin:10px 10px 10px 10px;
+}  
+
+.img_Informacao
+{
+    width:50px;
+    background-image: url(DefaultImages/information.gif);
+    background-repeat:no-repeat;
+    float:left;
+    margin:10px 10px 10px 10px;
+}  
+
+.img_Erro
+{
+    width:50px;
+    background-image: url(DefaultImages/error.gif);
+    background-repeat:no-repeat;
+    float:left;
+    margin:10px 10px 10px 10px;
+}  
+
+.img_Questao
+{
+    width:50px;
+    background-image: url(DefaultImages/question.gif);
+    background-repeat:no-repeat;
+    float:left;
+    margin:10px 10px 10px 10px;
+} 
+
+/* ---------- FIM MESSAGE BOX ---------- */

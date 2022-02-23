@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C40237E9-3C1F-4C0C-9669-204BA7FCAA91}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Arquitetura.Web.WC.TPopup</RootNamespace>
+    <AssemblyName>Arquitetura.Web.WC.TPopup</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=3.0.30512.20315, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\libraries\ajax4_0\AjaxControlToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="Arquitetura.TechBiz.Utils">
+      <HintPath>..\..\..\libraries\arqtechbiz_v1_1\Arquitetura.TechBiz.Utils.dll</HintPath>
+    </Reference>
+    <Reference Include="Arquitetura.TechBiz.Web">
+      <HintPath>..\..\..\libraries\arqtechbiz_v1_1\Arquitetura.TechBiz.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Base\Designs\TPopupDesigner.cs" />
+    <Compile Include="Base\EButton.cs" />
+    <Compile Include="Base\Styles\TPopupBodyStyle.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base\Styles\TPopupButtonStyle.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base\Styles\TPopupContainerStyle.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base\Styles\TPopupExtenderStyle.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base\Styles\TPopupFooterStyle.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base\Styles\TPopupHeaderStyle.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base\Styles\TPopupIconStyle.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base\Styles\TPopupInputStyle.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base\Styles\TPopupStyle.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base\TPopup.cs" />
+    <Compile Include="Base\TPopupEventArgs.cs" />
+    <Compile Include="Base\TPopupEventHandler.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TConfirmBox\TConfirmBox.cs" />
+    <Compile Include="TConfirmBox\TConfirmEventArgs.cs" />
+    <Compile Include="TConfirmBox\TConfirmEventHandler.cs" />
+    <Compile Include="TInputBox\TInputBox.cs" />
+    <Compile Include="TInputBox\TInputEventArgs.cs" />
+    <Compile Include="TInputBox\TInputEventHandler.cs" />
+    <Compile Include="TMessageBox\TMessageBox.cs" />
+    <Compile Include="TMessageBox\TMessageEventArgs.cs" />
+    <Compile Include="TMessageBox\TMessageEventHandler.cs" />
+    <Compile Include="TMessageBox\TMessageOption.cs" />
+    <Compile Include="TPopupBox\TPopupBox.cs" />
+    <Compile Include="TPopupBox\TPopupBoxDesigner.cs" />
+    <Compile Include="TPopupBox\TPopupTemplate.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\error.gif" />
+    <EmbeddedResource Include="Resources\information.gif" />
+    <EmbeddedResource Include="Resources\question.gif" />
+    <EmbeddedResource Include="Resources\success.gif" />
+    <EmbeddedResource Include="Resources\warning.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

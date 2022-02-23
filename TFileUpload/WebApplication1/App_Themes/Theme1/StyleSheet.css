@@ -1,0 +1,72 @@
+﻿.modalBackground
+{
+    filter: alpha(opacity=70);
+    opacity: 0.7;
+    background-color: #ccc;
+    background: url("../App_Images/linha.gif");
+}
+
+.modalWatermark
+{
+    border: 1px solid #BEBEBE;
+    background-color: #F0F8FF;
+    font-family: Arial;
+    font-size: 12px;
+    width:150px;
+    height:19px;
+}
+
+
+.footerEstilo
+{
+    background-color: #FFF;
+    text-align: center;
+}
+
+
+.footerEstilo .botao
+{
+    margin-top: 0px;
+}
+
+.bodyEstilo
+{
+    background-color: #FFFFFF;
+    font-family: Arial, Verdana, Times New Roman, san-serif;
+    font-size: 11px;
+    white-space: normal;
+    text-align: justify;
+    overflow-x: hidden !important;
+    vertical-align: middle;
+}
+
+.headerEstilo
+{
+    background-color: #8FBC8F;
+    font-family: Arial, Verdana, Times New Roman, san-serif;
+    font-size: 12px;
+    font-weight: bold;
+    color: #FFF;
+}
+
+.containerEstilo
+{
+    background-color: #F4F4F4;
+    border: 1px solid #2E8B57;
+    padding-bottom: 4px;
+    vertical-align: middle;
+}
+
+.containerEstilo textarea
+{
+    width: 280px;
+}
+
+.containerEstilo td
+{
+    vertical-align: middle;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+.containerEstilo div:

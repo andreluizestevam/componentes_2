@@ -1,0 +1,74 @@
+﻿using System;
+using System.Collections;
+using System.Web.UI;
+using Arquitetura.TechBiz.BS;
+
+namespace Arquitetura.Web.WebControls
+{
+    internal sealed class TBusinessServiceDataSource : DataSourceControl
+    {
+        #region Eventos
+
+        /// <summary>
+        /// Evento
+        /// </summary>
+        public event EventHandler DataSourceChanged;
+
+        #endregion
+
+        #region Atributos
+
+        /// <summary>
+        /// Atributo com nome das views
+        /// </summary>
+        private static string[] ViewNames;
+
+        /// <summary>
+        /// Atributo com a fonte de dados
+        /// </summary>
+        private BusinessService _dataSource;
+
+        #endregion
+
+        #region Construtores
+
+        /// <summary>
+        /// Construtor estático
+        /// </summary>
+        static TBusinessServiceDataSource()
+        {
+            ViewNames = new string[0];
+        }
+
+        /// <summary>
+        /// Construtor padrão
+        /// </summary>
+        /// <param name="dataSource">A fonte de dados</param>
+        /// <param name="dataMember">A propriedade da fonte de dados</param>
+        public TBusinessServiceDataSource(BusinessService dataSource)
+        {
+            this._dataSource = dataSource;
+        }
+
+        #endregion
+
+        /// <summary>
+        /// Método que recupera uma view.
+        /// </summary>
+        /// <param name="viewName">O nome da view</param>
+        /// <returns></returns>
+        public DataSourceView GetView(string viewName)
+        {
+            return new TBusinessServiceDataSourceView(this, this._dataSource.Vos);
+        }
+
+        /// <summary>
+        /// Método que retorna os nomes das views.
+        /// </summary>
+        /// <returns>ICollection</returns>
+        public ICollection GetViewNames()
+        {
+            return ViewNames;
+        }
+    }
+}

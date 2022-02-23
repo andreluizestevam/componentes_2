@@ -1,0 +1,547 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing;
+using System.IO;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using AjaxControlToolkit;
+using Arquitetura.TechBiz.Web.Utils;
+
+namespace Arquitetura.Web.WebControls
+{
+    /// <summary>
+    /// 
+    /// </summary>
+    [ParseChildren(true)]
+    [PersistChildren(true)]
+    [Themeable(true)]
+    [NonVisualControl]
+    public sealed class TFileUpload : Panel, IScriptControl, IPostBackDataHandler
+    {
+        #region Atributos
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private ScriptManager sMgr;
+
+        #endregion
+
+        #region Propriedades
+
+        /// <summary>
+        /// Propriedade que habilita a exibição do sumário de uploads.
+        /// </summary>
+        [DefaultValue(false)]
+        public bool ShowSummary
+        {
+            get
+            {
+                if (this.ViewState["_!ShowSummary"] == null)
+                {
+                    this.ViewState["_!ShowSummary"] = false;
+                }
+                return Convert.ToBoolean(this.ViewState["_!ShowSummary"]);
+            }
+            set { this.ViewState["_!ShowSummary"] = value; }
+        }
+
+        /// <summary>
+        /// Propriedade que habilita o upload de vários arquivos.
+        /// </summary>
+        [DefaultValue(false)]
+        public bool AllowMultiples
+        {
+            get
+            {
+                if (this.ViewState["_!AllowMultiples"] == null)
+                {
+                    this.ViewState["_!AllowMultiples"] = false;
+                }
+                return Convert.ToBoolean(this.ViewState["_!AllowMultiples"]);
+            }
+            set { this.ViewState["_!AllowMultiples"] = value; }
+        }
+
+        /// <summary>
+        /// Propriedade que armazena o histórico dos uploads.
+        /// </summary>
+        [DefaultValue(false)]
+        private List<TFileUploadHistory> Histories
+        {
+            get
+            {
+                if (this.ViewState["_!Histories"] == null)
+                {
+                    this.ViewState["_!Histories"] = new List<TFileUploadHistory>();
+                }
+                return (List<TFileUploadHistory>)this.ViewState["_!Histories"];
+            }
+            set { this.ViewState["_!Histories"] = value; }
+        }
+
+        #endregion
+
+        #region Metodos
+
+        /// <summary>
+        /// Metodo que retorna as referencias de script.
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<ScriptReference> GetScriptReferences()
+        {
+            List<ScriptReference> references = new List<ScriptReference>();
+
+            references.Add(new ScriptReference()
+            {
+                Assembly = "Arquitetura.Web.WC.TFileUpload",
+                Name = "Arquitetura.Web.WebControls.Resources.TFileUpload.js"
+            });
+
+            return references;
+        }
+
+        /// <summary>
+        /// Metodo que retorna os descritores de script.
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<ScriptDescriptor> GetScriptDescriptors()
+        {
+            // get descriptors
+            List<ScriptDescriptor> descriptors = new List<ScriptDescriptor>();
+
+            // create instance descriptor
+            ScriptControlDescriptor descriptor = new ScriptControlDescriptor("Arquitetura.Web.WebControls.TFileUpload", this.ClientID);
+
+            // config descriptor
+            descriptor.AddProperty("AllowMultiples", this.AllowMultiples);
+
+            // add descriptos
+            descriptors.Add(descriptor);
+
+            // return descriptor
+            return descriptors;
+        }
+
+        /// <summary>
+        /// Metodo que renderiza o componente.
+        /// </summary>
+        /// <param name="writer"></param>
+        protected override void Render(HtmlTextWriter writer)
+        {
+            base.Render(writer);
+
+            if (!this.DesignMode)
+            {
+                sMgr.RegisterScriptDescriptors(this);
+            }
+        }
+
+        /// <summary>
+        /// Evento pre-render
+        /// </summary>
+        /// <param name="e"></param>
+        protected override void OnPreRender(EventArgs e)
+        {
+            if (!this.DesignMode)
+            {
+                // registrando scriptmanager
+                sMgr = ScriptManager.GetCurrent(Page);
+
+                if (sMgr == null)
+                {
+                    throw new HttpException("A ScriptManager control must exist on the page.");
+                }
+
+                // registrando scripts
+                sMgr.RegisterScriptControl(this);
+
+                // renderizando os historicos
+                if (this.ShowSummary)
+                {
+                    Table tb = (Table)ControlUtil.FindControl(this, string.Concat(this.ID, "TB"), EFindControlStrategy.TopDown);
+
+                    foreach (TFileUploadHistory history in this.Histories)
+                    {
+                        TableRow tr = new TableRow();
+
+                        TableCell tc1 = new TableCell();
+                        tc1.Style.Add("border-bottom", "solid 1px #aaaaff");
+                        tc1.Style.Add("border-right", "solid 1px #aaaaff");
+                        tc1.Text = history.Name;
+                        tc1.ToolTip = history.ContentType;
+
+                        TableCell tc2 = new TableCell();
+                        tc2.Style.Add("border-bottom", "solid 1px #aaaaff");
+                        tc2.Style.Add("border-right", "solid 1px #aaaaff");
+                        tc2.Text = history.Length.ToString();
+
+                        tr.Cells.Add(tc1);
+                        tr.Cells.Add(tc2);
+
+                        tb.Rows.Add(tr);
+                    }
+                }
+            }
+
+            base.OnPreRender(e);
+        }
+
+        /// <summary>
+        /// Evento load
+        /// </summary>
+        /// <param name="e"></param>
+        protected override void OnLoad(EventArgs e)
+        {
+            this.Page.RegisterRequiresPostBack(this);
+
+            base.OnLoad(e);
+        }
+
+        /// <summary>
+        /// Método que cria os controle internos.
+        /// </summary>
+        protected override void CreateChildControls()
+        {
+            // create asyncfileupload
+            Panel pnl1 = new Panel();
+            pnl1.ID = string.Concat(this.ID, "TBAFU");
+            pnl1.Attributes.CssStyle.Add("display", "inline-block");
+            pnl1.Attributes.CssStyle.Add("float", "left");
+            pnl1.Attributes.CssStyle.Add("width", "95%");
+
+            AsyncFileUpload afu = new AsyncFileUpload();
+            afu.ID = string.Concat(this.ID, "AFU");
+            afu.ClientIDMode = System.Web.UI.ClientIDMode.AutoID;
+            afu.PersistFile = false;
+            afu.UploadingBackColor = Color.FromArgb(229, 227, 255);
+            afu.ErrorBackColor = Color.FromArgb(255, 231, 231);
+            afu.CompleteBackColor = Color.FromArgb(227, 249, 213);
+            afu.Width = Unit.Percentage(100);
+            afu.ThrobberID = string.Concat(this.ID, "THB");
+            afu.UploaderStyle = AsyncFileUpload.UploaderStyleEnum.Traditional;
+            //afu.UploadedComplete += new EventHandler<AsyncFileUploadEventArgs>(OnUploadedComplete);
+            //afu.UploadedFileError += new EventHandler<AsyncFileUploadEventArgs>(OnUploadedError);
+
+            ScriptManager.GetCurrent(this.Page).RegisterPostBackControl(this);
+            ScriptManager.GetCurrent(this.Page).RegisterPostBackControl(afu);
+
+            pnl1.Controls.Add(afu);
+
+            // create throbber
+            Panel pnl2 = new Panel();
+            pnl2.ID = string.Concat(this.ID, "THB");
+            pnl2.Attributes.CssStyle.Add("display", "none");
+            pnl2.Attributes.CssStyle.Add("float", "right");
+            pnl2.Attributes.CssStyle.Add("border", "1px solid #ccc");
+
+            System.Web.UI.WebControls.Image img = new System.Web.UI.WebControls.Image();
+            img.ID = string.Concat(this.ID, "IMG");
+            img.ImageUrl = this.Page.ClientScript.GetWebResourceUrl(this.GetType(), "Arquitetura.Web.WebControls.Resources.ajax.gif");
+            img.ImageAlign = ImageAlign.Middle;
+
+            pnl2.Controls.Add(img);
+
+            // create table
+            Table tb = new Table();
+            tb.ID = string.Concat(this.ID, "TB");
+            tb.Width = Unit.Percentage(95);
+            tb.CellPadding = 3;
+            tb.Style.Add("border-collapse", "collapse");
+            tb.Style.Add("border-left", "solid 1px #aaaaff");
+            tb.Style.Add("border-top", "solid 1px #aaaaff");
+            tb.Style.Add("font-size", "11px");
+
+            // add controls
+            this.Controls.Add(pnl1);
+            this.Controls.Add(pnl2);
+            this.Controls.Add(tb);
+        }
+
+        /// <summary>
+        /// Evento uploadedComplete
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OnUploadedComplete(object sender, AsyncFileUploadEventArgs e)
+        {
+            // get asynfileupload
+            AsyncFileUpload afu = (AsyncFileUpload)sender;
+
+            // verify has file
+            if (!afu.HasFile)
+            {
+                return;
+            }
+
+            // create item
+            TFileUploadItem item = new TFileUploadItem();
+
+            // config item
+            item.Name = Path.GetFileName(afu.PostedFile.FileName);
+            item.Path = Path.GetDirectoryName(afu.PostedFile.FileName);
+            item.ContentType = afu.PostedFile.ContentType;
+            item.Bytes = afu.FileBytes;
+            item.Length = int.Parse(e.filesize);
+
+            // create eventargs
+            TFileUploadEventArgs eventArgs = new TFileUploadEventArgs();
+            eventArgs.Item = item;
+            eventArgs.PersistFile = true;
+            eventArgs.State = (TFileUploadState)(int)e.state;
+            eventArgs.Message = e.statusMessage;
+
+            // handler event
+            if (UploadCompleted != null)
+            {
+                UploadCompleted(this, eventArgs);
+            }
+
+            // verificando se e pra salvar na sessao
+            if (eventArgs.PersistFile)
+            {
+                this.AddUploadItem(item);
+            }
+
+            // limpando arquivos
+            afu.ClearAllFilesFromPersistedStore();
+
+            // add history
+            this.AddHistory(item, eventArgs);
+        }
+
+        /// <summary>
+        /// Evento uploadederror
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OnUploadedError(object sender, AsyncFileUploadEventArgs e)
+        {
+            // verify state unknow to not file especify
+            if ((TFileUploadState)(int)e.state == TFileUploadState.Unknown)
+            {
+                return;
+            }
+
+            // get asynfileupload
+            AsyncFileUpload afu = (AsyncFileUpload)sender;
+
+            // create item
+            TFileUploadItem item = new TFileUploadItem();
+
+            // config item
+            item.Name = Path.GetFileName(e.filename);
+            item.Path = Path.GetDirectoryName(e.filename);
+            item.Length = int.Parse(e.filesize);
+
+            // create eventargs
+            TFileUploadEventArgs eventArgs = new TFileUploadEventArgs();
+            eventArgs.Item = item;
+            eventArgs.PersistFile = false;
+            eventArgs.State = (TFileUploadState)(int)e.state;
+            eventArgs.Message = e.statusMessage;
+
+            // handler event
+            if (UploadFailed != null)
+            {
+                UploadFailed(this, eventArgs);
+            }
+
+            // add history
+            this.AddHistory(item, eventArgs);
+        }
+
+        #endregion
+
+        #region Eventos
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [Bindable(true)]
+        [Category("Events")]
+        public event EventHandler<TFileUploadEventArgs> UploadCompleted;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [Bindable(true)]
+        [Category("Events")]
+        public event EventHandler<TFileUploadEventArgs> UploadFailed;
+
+        #endregion
+
+        #region Auxiliares
+
+        /// <summary>
+        /// Método que adiciona um item de upload na sessão.
+        /// </summary>
+        /// <param name="item">O item de upload.</param>
+        private void AddUploadItem(TFileUploadItem item)
+        {
+            //if (this.Page.Session["#UPLOADFILE#"] == null)
+            //{
+            //    this.Page.Session["#UPLOADFILE#"] = new Dictionary<string, TFileUploadItem>();
+            //}
+
+            //Dictionary<string, TFileUploadItem> dic = (Dictionary<string, TFileUploadItem>)this.Page.Session["#UPLOADFILE#"];
+
+            //if (dic.ContainsKey(item.Name))
+            //{
+            //    dic[item.Name] = item;
+            //}
+            //else
+            //{
+            //    dic.Add(item.Name, item);
+            //}
+        }
+
+        /// <summary>
+        /// Método que adiciona um item de upload na sessão.
+        /// </summary>
+        /// <param name="item">O item de upload.</param>
+        private void RemoveUploadItem(TFileUploadItem item)
+        {
+            //if (this.Page.Session["#UPLOADFILE#"] == null)
+            //{
+            //    return;
+            //}
+
+            //Dictionary<string, TFileUploadItem> dic = (Dictionary<string, TFileUploadItem>)this.Page.Session["#UPLOADFILE#"];
+
+            //dic.Remove(item.Name);
+        }
+
+        /// <summary>
+        /// Método que adiciona um item no histórico.
+        /// </summary>
+        /// <param name="item"></param>
+        public void AddHistory(TFileUploadItem item, TFileUploadEventArgs args)
+        {
+            if (!this.ShowSummary)
+            {
+                return;
+            }
+
+            this.Histories.Add(new TFileUploadHistory()
+            {
+                Name = item.Name,
+                ContentType = item.ContentType,
+                Length = item.Length,
+                State = args.State,
+                Message = args.Message,
+            });
+        }
+
+        #endregion
+
+        #region Evento PostBack
+
+        /// <summary>
+        /// Atributo que contém os dados enviados pelo evento postback.
+        /// </summary>
+        private string postBackData;
+
+        /// <summary>
+        /// Método que captura os dados do evento postback.
+        /// </summary>
+        /// <param name="postDataKey"></param>
+        /// <param name="postCollection"></param>
+        /// <returns></returns>
+        public bool LoadPostData(string postDataKey, System.Collections.Specialized.NameValueCollection postCollection)
+        {
+            if (!string.Equals(postDataKey, this.UniqueID))
+            {
+                return false;
+            }
+
+            string keyTarget = postCollection["__EVENTTARGET"];
+
+            if (!string.IsNullOrEmpty(keyTarget)
+                && (keyTarget.StartsWith(this.UniqueID)
+                    || keyTarget.StartsWith(this.ClientID)))
+            {
+                this.postBackData = postCollection["__EVENTARGUMENT"];
+
+                return !string.IsNullOrEmpty(this.postBackData);
+            }
+
+            string keyEvent = postCollection.Keys[postCollection.Count - 1];
+
+            if (!string.IsNullOrEmpty(keyEvent)
+                && (keyEvent.StartsWith(this.UniqueID)
+                    || keyEvent.StartsWith(this.ClientID)))
+            {
+                this.postBackData = postCollection["__EVENTARGUMENT"];
+
+                return !string.IsNullOrEmpty(this.postBackData);
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Método que trata os dados do evento postback. 
+        /// </summary>
+        public void RaisePostDataChangedEvent()
+        {
+            AsyncFileUpload afu = (AsyncFileUpload)ControlUtil.FindControl(this, string.Concat(this.ID, "AFU"), EFindControlStrategy.TopDown);
+
+            string[] values = this.postBackData.Split(new char[] { ';' });
+
+            if (values[0].Equals("UPLOADERROR"))
+            {
+                this.OnUploadedError(afu, new AsyncFileUploadEventArgs(AsyncFileUploadState.Failed, values[3], values[1], values[2]));
+            }
+            else if (values[0].Equals("UPLOADSUCCESS"))
+            {
+                this.OnUploadedComplete(afu, new AsyncFileUploadEventArgs(AsyncFileUploadState.Success, values[3], values[1], values[2]));
+            }
+        }
+
+        #endregion
+    }
+}
+==========
+using System;
+
+namespace Arquitetura.Web.WebControls
+{
+    /// <summary>
+    /// 
+    /// </summary>
+    [Serializable]
+    public sealed class TFileUploadHistory
+    {
+        #region Propriedades
+
+        /// <summary>
+        /// O nome do arquivo.
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
+        /// O tamanho do arquivo.
+        /// </summary>
+        public int Length { get; set; }
+
+        /// <summary>
+        /// O tipo de conteúdo do arquivo.
+        /// </summary>
+        public string ContentType { get; set; }
+
+        /// <summary>
+        /// A mensagem do upload.
+        /// </summary>
+        public string Message { get; set; }
+
+        /// <summary>
+        /// O estado do upload.
+        /// </summary>
+        public TFileUploadState State { get; set; }
+
+        #endregion
+    }
+}

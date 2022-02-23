@@ -1,0 +1,642 @@
+﻿/*-------------------------------*/
+/*Body and HTML supported classes*/
+/*-------------------------------*/
+body
+{
+	font-family: Verdana, Helvetica, sans-serif;
+	font-size: 11px;
+	height: 100%;
+	min-height: 100%;
+}
+html
+{
+	height: 100%;
+	min-height: 100%;
+	width: 100%; /* Full width and height */
+	margin: 0px; /* No space between browser edge and content */
+	padding: 0px;
+}
+*
+{
+	margin: 0px;
+	padding: 0px;
+	font-family: inherit;
+	font-style: inherit;
+	font-size: 100%;
+}
+
+/*-------------------------------*/
+/*Container supported classes*/
+/*-------------------------------*/
+/*Main wrapper class*/
+.ContainerWrapper
+{
+	background-color: #DFE8F6;
+	border-right: 1px solid #9ABBE8;
+	border-bottom: 1px solid #9ABBE8;
+	border-left: 1px solid #9ABBE8;
+	width: 100%;
+}
+/*Gap between wrapper and container*/
+.ContainerMargin
+{
+	padding: 4px;
+}
+/*Container*/
+.Container
+{
+	border: 1px solid #99BBE8;
+	background-color: White;
+}
+/*Header of each container*/
+.ContainerHeader
+{
+	background-image: url(../Images/Container_Header.gif);
+	height: 23px;
+	font-size: 12px;
+	font-weight: bold;
+	color: #133047;
+}
+/*Margin of Header of each container*/
+.ContainerHeader td
+{
+	padding: 4px;
+}
+
+/*-------------------------------*/
+/*Messages Status supported classes*/
+/*-------------------------------*/
+/*General class for Message*/
+#tblMessage
+{
+	height: 23px;
+	width: 100%;
+}
+/*Message for Successful*/
+#tblMessage.Success
+{
+	border: solid 1px #5AAD0D;
+	background-color: #E5F7D5;
+}
+/*Message for Information*/
+#tblMessage.Information
+{
+	border: solid 1px #88B5E9;
+	background-color: #E2EDF8;
+}
+/*Message for Warning*/
+#tblMessage.Warning
+{
+	border: solid 1px #FD7B04;
+	background-color: #FFF7E7;
+}
+/*Message for Error*/
+#tblMessage.Error
+{
+	border: solid 1px #FF0001;
+	background-color: #FFEAEA;
+}
+
+/*-------------------------------*/
+/*Messages Status Icon supported classes*/
+/*-------------------------------*/
+/*General class for Message Icon*/
+#dvIcon
+{
+	line-height: 23px;
+	background-repeat: no-repeat;
+	background-position: 2px 2px;
+	padding-left: 38px;
+}
+/*Message Icon for Successful*/
+#dvIcon.Success
+{
+	background-image: url('../Images/Message_Success.png');
+}
+/*Message Icon for Information*/
+#dvIcon.Information
+{
+	background-image: url('../Images/Message_Information.png');
+}
+/*Message Icon for Warning*/
+#dvIcon.Warning
+{
+	background-image: url('../Images/Message_Warning.png');
+}
+/*Message Icon for Error*/
+#dvIcon.Error
+{
+	background-image: url('../Images/Message_Error.png');
+}
+
+/*-------------------------------*/
+/*Progressbar supported classes*/
+/*-------------------------------*/
+/*Progressbar container wrapper*/
+#dvProgressContainer
+{
+	border-left: solid 1px #CFCFCF;
+	border-right: solid 1px #CFCFCF;
+	width: 300px;
+	height: 12px;
+	background-image: url(../Images/Progressbar_Wrapper.gif);
+}
+/*Progressbar container*/
+#dvProgress
+{
+	background-image: url('../Images/Progressbar_Content.gif');
+	height: 100%;
+	width: 498px;
+}
+
+/*-------------------------------*/
+/*Grid supported classes*/
+/*-------------------------------*/
+/*Grid Header Row*/
+.GridHeader
+{
+	background-image: url(../Images/Grid_Header.gif);
+	height: 25px;
+}
+/*Grid Header row separator */
+.GridHeader td.Separator
+{
+	border-right: solid 1px #C9CACA;
+	padding: 0px 2px 0px 2px;
+}
+/*Grid row height for empty, normal, selected and hovered */
+.GridRow, .GridEmptyRow, .GridNumberRow, .GridNormalRow, .GridAlternate, .GridHoverRow
+{
+	height: 20px;
+}
+/*Grid Empty row */
+.GridEmptyRow
+{
+	vertical-align: middle;
+	text-align: center;
+	color: Gray;
+}
+/*Grid Numbered row */
+.GridNumberRow
+{
+	background-image: url(../Images/Grid_RowNumber.gif);
+}
+/*Grid Normal row */
+.GridNormalRow
+{
+	background-image: url(../Images/Grid_RowNormal.gif);
+}
+/*Grid Alternate row */
+.GridAlternate
+{
+	background-image: url(../Images/Grid_RowAlternate.gif);
+}
+/*Grid Hover row */
+.GridHoverRow
+{
+	background-image: url(../Images/Grid_RowHover.gif);
+}
+/*Grid Footer row*/
+.GridFooter
+{
+	background-image: url(../Images/Grid_Footer.gif);
+	height: 25px;
+}
+/*Grid Footer row left and right margin*/
+.GridFooter td
+{
+	padding: 0px 3px 0px 3px;
+}
+.StartUpload
+{
+	/* for IE */
+	filter:alpha(opacity=20);
+	/* CSS3 standard */
+	opacity:0.2;
+}
+
+
+
+/*
+
+
+============== DOCUMENTO CSS - INFRAERO 2009 ====
+Autor: David Silva - Analista de Designer / Equipe de Designer [TISI 3]
+LocalizaÃ§Ã£o: SEDE
+Ramal: 2560
+EMAIL: davidjrnegao@gmail.com
+CELULAR: 	61 - 96889359
+DescriÃ§Ã£o: EstilizaÃ§Ã£o para grid
+=================================================
+
+
+*/
+
+/* ---------- BARRA DE ROLAGEM ----------*/
+
+.rolagem{
+	background: #fff;
+	border: 1px solid #6CA6CD;
+	padding:4px;
+	margin: 5px 10px 15px;
+	width:96%;
+	height:100px;
+	overflow: auto;
+}
+.rolagem_Extendida{
+	background: #fff;
+	margin: 5px 10px 5px;
+	width:98%;
+	height:300px;
+	overflow: auto;
+}
+
+
+/* ---------- FIM BARRA DE ROLAGEM ----------*/
+
+/* ---------RESULTADO DA PESQUISA ----------*/
+
+#tabResultado{	
+	border:1px solid #EFE8D2;
+	margin-top:5px;
+}
+
+#tabResultado table{
+	font-size:11px;
+	border-collapse: collapse;
+}
+
+#tabResultado td{
+	border:1px solid #EFE8D2;    
+}
+
+#tabResultado th{
+	background-color:#687993;	
+	border:1px solid #EFE8D2;
+	color:#fff;
+}
+
+/*----*/
+
+#tabResultadoA table{
+	font-size:11px;
+	border-collapse: collapse;
+}
+
+
+
+.tabPagina{	
+	border:1px solid #EFE8D2;
+	margin-top:5px;
+}
+
+.tabPagina table{
+	font-size:11px;
+	border-collapse: collapse;
+	width:100%;	
+}
+
+.tabPagina td{
+	border:1px solid #EFE8D2;    
+}
+
+.tabPagina th{
+	background-color:#00416C;	
+	border:1px solid #EFE8D2;
+	color:#fff;
+}
+
+/* --------- FIM RESULTADO DA PESQUISA ----------*/
+
+/* ---------- GRID ----------*/
+
+.grd_Cabecalho {
+	background-color: #687993;
+	font-size: 12px;
+	color: #FFFFFF;
+	font-weight: bold;
+}
+
+.grd_Cabecalho a 
+{
+    color:#ffffff !important;
+}
+
+.grd_Padrao, .grd_Padrao td{	
+	border:1px solid #EFE8D2;	
+}
+
+.grd_Padrao table{
+	font-size:11px;
+	border-collapse:collapse;
+}
+
+.grd_Padrao th{
+    color:#fff;
+    border:1px solid #EFE8D2;
+    background-color:#687993;
+    font-size:12px;
+    text-align:center;
+}
+
+.grd_Padrao input{
+	margin:0;
+	padding:0;
+}
+
+.grd_Padrao input[type="image"]{
+	margin-top: 0px;
+	margin-bottom: 0px;
+	/*margin-left: 1% !important;
+	margin-right: 0px;*/
+	padding:0;
+}
+
+.grd_Paginador
+{
+    font-weight:bold;
+    text-align:center;
+    border:none !important;
+}
+
+.grd_Paginador td
+{
+    padding-bottom:2px;
+    padding-top:2px;
+    padding-left:5px;
+    padding-right:5px;
+    border:none !important;
+}
+
+.grd_Paginador tr
+{
+    margin:5px;
+}
+
+.linha_Branca{
+	background-color:#ffffff;
+}
+
+.linha_Branca:hover{
+	background-color:#edecec;
+}
+
+.linha_Alternada{
+	background-color:#dedede;	
+}
+
+.linha_Alternada:hover{
+	background-color:#edecec;	
+}
+
+.linha_Branca td, .linha_Alternada td{
+	padding-left:6px;
+	padding-right:6px;
+}
+
+.linha_Editavel{
+	background-color:#d2e7f5;	
+}
+
+/* ---------- GRID ----------*/
+
+/* ---------- COLUNAS ---------- */
+
+
+.largura1{
+	width:1%;
+}
+
+.largura2{
+	width:2%;
+}
+
+.largura5{
+	width:5%;
+}
+
+.largura7{
+	width:7%;
+}
+
+.largura10{
+	width:10%;
+}
+
+.largura14{
+	width:14%;
+}
+
+.largura15{
+	width:15%;
+}
+
+.largura16{
+	width:16%;
+}
+
+.largura20{
+	width:20%;
+}
+
+.largura25{
+	width:25%;
+}
+
+.largura30{
+	width:30%;
+}
+
+.largura33{
+	width:33%;
+}
+
+.largura35{
+	width:35%;
+}
+
+.largura40{
+	width:40%;
+}
+
+.largura45{
+	width:45%;
+}
+
+.largura49 
+{
+    width:49%;
+}
+
+.largura50{
+	width:50%;
+}
+
+.largura55{
+	width:55%;
+}
+
+.largura60{
+	width:60%;
+}
+
+.largura65{
+	width:65%;
+}
+
+.largura70{
+	width:70%;
+}
+
+.largura75{
+	width:75%;
+}
+
+.largura80{
+	width:80%;
+}
+
+.largura85{
+	width:85%;
+}
+
+.largura90{
+	width:90%;
+}
+
+.largura95{
+	width:95%;
+}
+
+.largura96 
+{
+    width:96.5%;
+}
+
+.largura97{
+	width:97%;
+}
+
+.largura100{
+	width:100%;
+}
+
+/*---------- FIM COLUNAS ---------- */
+
+
+/* ---------- TABLE COM SCROLL ---------- */
+
+div.scrollTable{
+    background: #fff;
+    border: 1px solid #EFE8D2;
+    margin-top: 5px;
+    max-height: 250px;
+    overflow: auto; 
+}
+
+div.scrollTable caption, div.scrollTable_Extendido caption{
+    color: #717171;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 5px 0;
+}
+
+div.scrollTable_Extendido{
+    background: #fff;
+    border: 1px solid #EFE8D2;
+    margin-top: 5px;
+    max-height: 500px;
+    overflow: auto; 
+}
+
+div.scrollTable table, div.scrollTable_Extendido table{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+div.scrollTable th, div.scrollTable table td, div.scrollTable_Extendido th, div.scrollTable_Extendido td{
+	border: 1px solid #EFE8D2;
+	padding: 3px 10px;
+	font-size:11px;
+}
+
+div.scrollTable th, div.scrollTable_Extendido th {
+	background-color: #687993;
+	font-size: 12px;
+	color: #FFFFFF;
+	font-weight: bold;
+}
+
+div.scrollTable div.rolagem div.scrollTable_Extendido{{
+    max-height: 200px;
+    overflow: auto;
+}
+
+/* ---------- FIM TABLE COM SCROLL ---------- */
+
+/* ---------- AJUSTAR RESULTADO ----------*/
+.result_Pesquisa {
+	width:99%;
+}
+
+/* ---------- AJUSTAR RESULTADO ----------*/
+
+/* ---------- GRID SECUNDÁRIO ----------*/
+
+.grd_Sec_Bordas {
+	width:24%;
+	border:solid 1px #6ca6cd;	
+	float:left;
+}
+.grd_Sec_Bg{
+	color:#005792 !important;
+	font-weight:bold;
+	text-align:center;
+	background-color:#D3E9F8;
+	height:23px;
+}
+
+.grd_Sec_Alinha{
+	text-align:center;
+	height:70px;
+}
+
+
+/* --------- AJUSTE DE BORDAS ---------*/
+.sem_bordas {
+	border-collapse: collapse;
+}
+
+/* --------- FIM AJUSTE DE BORDAS ---------*/
+/* --------- DESTAQUES NO GRID ---------*/
+.topo_grid
+{
+    color: #717171;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 2px 5px;
+    text-align:center;
+    float:left;
+    border: none !important;
+}
+
+.topo_grid1
+{
+    color: #717171;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 2px 5px;
+    text-align:left;
+    border: none !important;
+}
+/* --------- FIM DESTAQUES NO GRID ---------*/
+
+/* ---------- BORDAS ----------*/
+.borda_Grid{	
+	border:1px solid #EFE8D2;
+}
+
+.altura20
+{
+    height:20px;
+}

@@ -1,0 +1,27 @@
+﻿.sessionprogress_modalstyle
+{
+/*    background-color: #ececec;
+    filter: alpha(opacity=40);
+    opacity: 0.4;
+*/
+    width:100%;
+    height:auto;
+}
+.sessionprogress_contentstyle
+{
+    border: 1px solid #696969;
+    background-color: #fff;
+    margin: 2px;
+    padding: 2px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+.sessionprogress_labelstyle
+{
+    color: black;
+    font-size: 11px;
+    font-weight: bold;
+    font-family: Arial;
+    letter-spacing: 2px;
+}

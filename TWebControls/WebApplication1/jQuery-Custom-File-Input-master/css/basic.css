@@ -1,0 +1,15 @@
+body
+{
+    font-family: "Segoe UI" , Arial, sans-serif;
+}
+label
+{
+    display: block;
+}
+
+
+.file
+{
+    display: none;
+}
+

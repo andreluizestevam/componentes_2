@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <BaseAddress>C:\Projetos\Infraero\ARQUITETURA\componentes\TUpdateProgress\</BaseAddress>
+    <DeployAddress>C:\Projetos\Infraero\ARQUITETURA\libraries\webcontrols\</DeployAddress>
+    <Configuration>RELEASE</Configuration>
+  </PropertyGroup>
+  <ItemGroup Condition="$(Configuration)=='RELEASE'">
+    <Folder Include="$(BaseAddress)/TUpdateProgress/bin/release/*TUpdateProgress.dll"/>
+  </ItemGroup>
+  <Target Name="Build">
+    <Copy SourceFiles="@(Folder)" ContinueOnError="false" DestinationFolder="$(DeployAddress)" />
+  </Target>
+</Project>

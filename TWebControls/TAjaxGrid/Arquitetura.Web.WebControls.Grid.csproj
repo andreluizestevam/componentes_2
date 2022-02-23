@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C1F4D417-0BA7-48CF-B230-5E01C22C095A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Arquitetura.Web.WebControls.Grid</RootNamespace>
+    <AssemblyName>Arquitetura.Web.WebControls.Grid</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\Referencias\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Enum\EFormat.cs" />
+    <Compile Include="Enum\EAlign.cs" />
+    <Compile Include="TGridColModelEditOptions.cs" />
+    <Compile Include="TGrid.cs" />
+    <Compile Include="TGridColModel.cs" />
+    <Compile Include="TGridEditOptions.cs" />
+    <Compile Include="TGridPagerOption.cs" />
+    <Compile Include="TGridResult.cs" />
+    <Compile Include="TGridRow.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="JavaScript\css\ellipsis-xbl.xml" />
+    <Content Include="JavaScript\css\ui.jqgrid.css" />
+    <Content Include="JavaScript\js\Changes.txt" />
+    <Content Include="JavaScript\js\i18n\grid.locale-ar.js" />
+    <Content Include="JavaScript\js\i18n\grid.locale-bg.js" />
+    <Content Include="JavaScript\js\i18n\grid.locale-bg1251.js" />
+    <Content Include="JavaScript\js\i18n\grid.locale-cat.js" />
+    <Content Include="JavaScript\js\i18n\grid.locale-cn.js" />
+    <Content Include="JavaScript\js\i18n\grid.locale-cs.js" />
+    <Content Include="JavaScript\js\i18n\grid.locale-da.js" />
+    <Content Include="JavaScript\js\i18n\grid.locale-de.js" />
+    <Content Include="JavaScript\js\i18n\grid.locale-el.js" />
+    <Content Include="JavaScript\js\i18n\grid.locale-en.js" />
+    <Content Include="JavaScript\js\i18n\grid.locale-es.js" />
+    <Content Include="JavaScript\js\i18n\grid.locale-fa.js" />
+    <Content Include="JavaScript\js\i18n\grid.locale-fi.js" />
+    <Content Include="JavaScript\js\i18n\grid.locale-fr.js" />
+    <Content Include="JavaScript\js\i18n\grid.locale-gl.js" />
+    <Content Include="JavaScript\js\i18n\grid.locale-he.js" />
+    <Content Include="JavaScript\js\i18n\grid.locale-hr.js" />
+    <Content Include="JavaScript\js\i18n\grid.locale-hr1250.js" />
+    <Content Include="JavaScript\js\i18n\grid.locale-hu.js" />
+    <Content Include="JavaScript\js\i18n\grid.locale-is.js" />
+    <Content Include="JavaScript\js\i18n\grid.locale-it.js" />
+    <Content Include="JavaScript\js\i18n\grid.locale-ja.js" />
+    <Content Include="JavaScript\js\i18n\grid.locale-lt.js" />
+    <Content Include="JavaScript\js\i18n\grid.locale-mne.js" />
+    <Content Include="JavaScript\js\i18n\grid.locale-nl.js" />
+    <Content Include="JavaScript\js\i18n\grid.locale-no.js" />
+    <Content Include="JavaScript\js\i18n\grid.locale-pl.js" />
+    <Content Include="JavaScript\js\i18n\grid.locale-pt-br.js" />
+    <Content Include="JavaScript\js\i18n\grid.locale-pt.js" />
+    <Content Include="JavaScript\js\i18n\grid.locale-ro.js" />
+    <Content Include="JavaScript\js\i18n\grid.locale-ru.js" />
+    <Content Include="JavaScript\js\i18n\grid.locale-sk.js" />
+    <Content Include="JavaScript\js\i18n\grid.locale-sr-latin.js" />
+    <Content Include="JavaScript\js\i18n\grid.locale-sr.js" />
+    <Content Include="JavaScript\js\i18n\grid.locale-sv.js" />
+    <Content Include="JavaScript\js\i18n\grid.locale-th.js" />
+    <Content Include="JavaScript\js\i18n\grid.locale-tr.js" />
+    <Content Include="JavaScript\js\i18n\grid.locale-ua.js" />
+    <Content Include="JavaScript\js\install.txt" />
+    <Content Include="JavaScript\js\jquery.jqGrid.min.js" />
+    <Content Include="JavaScript\js\jquery.jqGrid.src.js" />
+    <Content Include="JavaScript\plugins\grid.addons.js" />
+    <Content Include="JavaScript\plugins\grid.postext.js" />
+    <Content Include="JavaScript\plugins\grid.setcolumns.js" />
+    <Content Include="JavaScript\plugins\jquery.contextmenu.js" />
+    <Content Include="JavaScript\plugins\jquery.searchFilter.js" />
+    <Content Include="JavaScript\plugins\jquery.tablednd.js" />
+    <Content Include="JavaScript\plugins\searchFilter.css" />
+    <Content Include="JavaScript\plugins\ui.multiselect.css" />
+    <Content Include="JavaScript\plugins\ui.multiselect.js" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

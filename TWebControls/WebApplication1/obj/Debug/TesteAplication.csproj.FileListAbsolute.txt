@@ -1,0 +1,12 @@
+D:\Repositorios\ARQUITETURA\componentes\TWebControls\WebApplication1\bin\WebApplication1.dll
+D:\Repositorios\ARQUITETURA\componentes\TWebControls\WebApplication1\bin\WebApplication1.pdb
+D:\Repositorios\ARQUITETURA\componentes\TWebControls\WebApplication1\bin\Arquitetura.TechBiz.Web.dll
+D:\Repositorios\ARQUITETURA\componentes\TWebControls\WebApplication1\bin\Arquitetura.Web.WebControls.dll
+D:\Repositorios\ARQUITETURA\componentes\TWebControls\WebApplication1\bin\Arquitetura.Web.WebControls.Grid.dll
+D:\Repositorios\ARQUITETURA\componentes\TWebControls\WebApplication1\bin\Newtonsoft.Json.dll
+D:\Repositorios\ARQUITETURA\componentes\TWebControls\WebApplication1\bin\Arquitetura.TechBiz.Messages.dll
+D:\Repositorios\ARQUITETURA\componentes\TWebControls\WebApplication1\bin\Arquitetura.Web.WebControls.Grid.pdb
+D:\Repositorios\ARQUITETURA\componentes\TWebControls\WebApplication1\bin\Arquitetura.Web.WebControls.pdb
+D:\Repositorios\ARQUITETURA\componentes\TWebControls\WebApplication1\obj\Debug\TesteAplication.csprojResolveAssemblyReference.cache
+D:\Repositorios\ARQUITETURA\componentes\TWebControls\WebApplication1\obj\Debug\WebApplication1.dll
+D:\Repositorios\ARQUITETURA\componentes\TWebControls\WebApplication1\obj\Debug\WebApplication1.pdb

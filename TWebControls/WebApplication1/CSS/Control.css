@@ -1,0 +1,470 @@
+﻿
+.error
+{
+    border-top: 1px solid #f7d0d0;
+    border-bottom: 1px solid #c87676;
+    background-color: #f3c7c7;
+    background: -webkit-gradient(linear, left top, left bottom, from(#f3c7c7), to(#eea2a2));
+    background: -moz-linear-gradient(top, #f3c7c7, #eea2a2);
+    background: linear-gradient(top, #f3c7c7, #eea2a2);
+    color: #d12f19;
+}
+
+input.error
+{
+    border: thin solid #FF0000;
+    background-color: #FFFFBB;
+}
+
+.okClass
+{
+    background-color: Green;
+}
+
+.errorHighlight
+{
+    border: 2px solid #CC0000;
+}
+.textinput
+{
+    border: 1px silver solid;
+}
+
+/* css for timepicker */
+.ui-timepicker-div .ui-widget-header
+{
+    margin-bottom: 8px;
+}
+.ui-timepicker-div dl
+{
+    text-align: left;
+}
+.ui-timepicker-div dl dt
+{
+    height: 25px;
+    margin-bottom: -25px;
+}
+.ui-timepicker-div dl dd
+{
+    margin: 0 10px 10px 65px;
+}
+.ui-timepicker-div td
+{
+    font-size: 90%;
+}
+.ui-tpicker-grid-label
+{
+    background: none;
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+
+/*  ---------- CSS PÁGINA PRINCIPAL ---------- */
+
+.divContainer label
+{
+    display: block;
+}
+
+.labelClass
+{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+.requiredClass
+{
+    color: #F00F00;
+}
+
+input[type="text"], select, textarea, input.error
+{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    padding: 2px 2px;
+    border: 1px solid #6CA6CD;
+    margin: 2px 0 5px 5px;
+    clear: both;
+    display: inline;
+}
+
+/* ---------- FIM CSS PÁGINA PRINCIPAL ---------- */
+
+/* ---------- BALÃO MENSAGEM DE ERRO ---------- */
+div.error
+{
+    border-bottom: 1px solid #f7d1d1;
+    border-top: 1px solid #f7d1d1;
+    border-right: 1px solid #f7d1d1;
+    background-color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: #b40000;
+    padding: 3px 3px 3px 5px;
+}
+
+.message
+{
+    background-image: url(images/setaValidation.png);
+    background-repeat: no-repeat;
+    padding-left: 11px;
+}
+
+input.error
+{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    padding: 2px 2px;
+    border: 1px solid #6CA6CD;
+    margin: 2px 0 5px 5px;
+    clear: both;
+    display: inline;
+    background-color: #fbe8e8;
+}
+
+/* ---------- FIM BALÃO MENSAGEM DE ERRO ---------- */
+
+/* ---------- TAMANHO DOS CAMPOS INPUT TEXT---------- */
+.cp_Data
+{
+    width: 70px;
+}
+
+.cp_DataHora
+{
+    width: 105px;
+}
+
+.cp_Cpf
+{
+    width: 100px;
+}
+
+.cp_Cnpj
+{
+    width: 120px;
+}
+
+.cp_Hora
+{
+    width: 40px;
+}
+
+.cp_Ano
+{
+    width: 35px;
+}
+
+.cp_MesAno
+{
+    width: 55px;
+}
+
+.cp_Telefone
+{
+    width: 95px;
+}
+
+.cp_Cep
+{
+    width: 70px;
+}
+
+.cp_1015
+{
+    width: 110px;
+}
+
+.cp_1620
+{
+    width: 145px;
+}
+
+.cp_2130
+{
+    width: 210px;
+}
+
+.cp_3140
+{
+    width: 285px;
+}
+
+.cp_4150
+{
+    width: 2355px;
+}
+
+.cp_5160
+{
+    width: 425px;
+}
+
+.cp_6170
+{
+    width: 500px;
+}
+
+.cp_7180
+{
+    width: 570px;
+}
+
+.cp_8190
+{
+    width: 640px;
+}
+
+.cp_9199
+{
+    width: 710px;
+}
+
+.cp_100
+{
+    width: 720px;
+}
+
+.cp_150
+{
+    width: 880px;
+}
+
+/* ---------- FIM TAMANHO DOS CAMPOS INPUT TEXT ---------- */
+
+/* ---------- MESSAGE BOX ---------- */
+
+.message
+{
+    color: Black;
+}
+
+
+.conteudo_Mensagem
+{
+    margin-top: 15px;
+}
+
+.img_Confirmacao
+{
+    width: 51px;
+    height: 50px;
+    min-height: 50px;
+    background-image: url(DefaultImages/confirm.gif);
+    background-repeat: no-repeat;
+    float: left;
+    margin: 0px 10px 10px 0px;
+}
+
+.img_Alerta
+{
+    width: 51px;
+    height: 50px;
+    min-height: 50px;
+    background-image: url(DefaultImages/warning.gif);
+    background-repeat: no-repeat;
+    float: left;
+    margin: 0px 10px 10px 0px;
+}
+
+.img_Informacao
+{
+    width: 51px;
+    height: 50px;
+    min-height: 50px;
+    background-image: url(DefaultImages/information.gif);
+    background-repeat: no-repeat;
+    float: left;
+    margin: 0px 10px 10px 0px;
+}
+
+.img_Erro
+{
+    width: 51px;
+    height: 50px;
+    min-height: 50px;
+    background-image: url(DefaultImages/error.gif);
+    background-repeat: no-repeat;
+    float: left;
+    margin: 0px 10px 10px 0px;
+}
+
+.img_Questao
+{
+    width: 51px;
+    height: 50px;
+    min-height: 50px;
+    background-image: url(DefaultImages/question.gif);
+    background-repeat: no-repeat;
+    float: left;
+    margin: 0px 10px 10px 0px;
+}
+
+/* ---------- FIM MESSAGE BOX ---------- */
+
+/* ---------- MODAL ---------- */
+
+.modalBackground
+{
+    filter: alpha(opacity=70);
+    opacity: 0.7;
+    background-color: Gray;
+}
+
+.modalWatermark
+{
+    border: 1px solid #BEBEBE;
+    background-color: #D6E5F3;
+    font-family: Arial;
+    font-size: 11px;
+}
+
+.footerEstilo
+{
+    background-color: #FFF;
+    text-align: center;
+}
+
+.footerEstilo .botao
+{
+    margin-top: 0px;
+    height: 22px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.botao
+{
+    font-weight: normal;
+}
+
+.bodyEstilo
+{
+    background-color: #FFFFFF;
+    font-family: Arial, Verdana, Times New Roman, san-serif;
+    font-size: 12px;
+    white-space: normal;
+    text-align: justify; /* overflow-x: hidden !important;*/
+    vertical-align: middle;
+}
+
+.headerEstilo
+{
+    background-color: #00416C;
+    font-family: Arial, Verdana, Times New Roman, san-serif;
+    font-size: 12px;
+    font-weight: bold;
+    color: #FFF;
+}
+
+.containerEstilo
+{
+    background-color: #F4F4F4;
+    border: 1px solid #A4A4A4;
+    padding-bottom: 4px;
+    vertical-align: middle;
+}
+
+.containerEstilo textarea
+{
+    width: 280px;
+}
+
+.containerEstilo td
+{
+    vertical-align: middle;
+    padding-left: 6px;
+    padding-right: 2px;
+}
+
+.simplemodal-overlay
+{
+    background-color: #959595;
+}
+
+#simplemodal-overlay
+{
+    background-color: #959595;
+}
+
+.simplemodal-wrap
+{
+    width: 98%;
+}
+
+.simplemodal-data
+{
+    width: 98%;
+}
+
+#simplemodal-container
+{
+    border: none !important;
+    padding: 0px !important;
+}
+
+
+
+.modalCloseImg
+{
+    width: 10px;
+    height: 10px;
+    float: right;
+    background-image: url(../App_Images/fechar.gif);
+    margin: 5px;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+iframe
+{
+    border-width: 0px !important;
+    border-style: solid !important;
+    border-color: #ffffff !important;
+    margin: 0px;
+}
+
+.modalBody
+{
+    margin: 5px;
+}
+
+/* ---------- BARRA DE PROGRESSO ---------- */
+.modalProgress
+{
+    width: 32px;
+    height: 32px;
+    min-height: 32px;
+    background-repeat: no-repeat;
+    float: left;
+    background-image: url(../App_Images/loader.gif);
+    margin-right:10px;
+}
+
+.modalProgress_Text
+{   font-family: Arial, Verdana, Times New Roman, san-serif;
+    font-size: 12px;
+    color:#403f3f;
+    font-weight:bold;
+    margin-top:30px !important;
+    height:30px;
+    padding:5px;
+}
+    
+
+#idModalProcess 
+{
+    width:200px;
+    height:40px;
+    padding:10px;
+}
+
+#idModalProcess .modalProgress_Text 
+{
+    vertical-align:sub;}
+    
+    
+/* ---------- FIM BARRA DE PROGRESSO ---------- */

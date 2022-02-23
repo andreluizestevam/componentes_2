@@ -1,0 +1,9 @@
+D:\Repositorios\ARQUITETURA\componentes\TGridView\TGridView\bin\Debug\Arquitetura.Web.WC.TGridView.dll
+D:\Repositorios\ARQUITETURA\componentes\TGridView\TGridView\bin\Debug\Arquitetura.Web.WC.TGridView.pdb
+D:\Repositorios\ARQUITETURA\componentes\TGridView\TGridView\bin\Debug\Arquitetura.TechBiz.BS.dll
+D:\Repositorios\ARQUITETURA\componentes\TGridView\TGridView\bin\Debug\Arquitetura.TechBiz.Common.dll
+D:\Repositorios\ARQUITETURA\componentes\TGridView\TGridView\bin\Debug\Arquitetura.TechBiz.Utils.dll
+D:\Repositorios\ARQUITETURA\componentes\TGridView\TGridView\bin\Debug\Arquitetura.TechBiz.Web.dll
+D:\Repositorios\ARQUITETURA\componentes\TGridView\TGridView\obj\Debug\TGridView.csprojResolveAssemblyReference.cache
+D:\Repositorios\ARQUITETURA\componentes\TGridView\TGridView\obj\Debug\Arquitetura.Web.WC.TGridView.dll
+D:\Repositorios\ARQUITETURA\componentes\TGridView\TGridView\obj\Debug\Arquitetura.Web.WC.TGridView.pdb

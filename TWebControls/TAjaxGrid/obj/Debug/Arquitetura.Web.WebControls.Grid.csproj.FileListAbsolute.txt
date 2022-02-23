@@ -1,0 +1,6 @@
+D:\Repositorios\ARQUITETURA\componentes\TWebControls\TAjaxGrid\bin\Debug\Arquitetura.Web.WebControls.Grid.dll
+D:\Repositorios\ARQUITETURA\componentes\TWebControls\TAjaxGrid\bin\Debug\Arquitetura.Web.WebControls.Grid.pdb
+D:\Repositorios\ARQUITETURA\componentes\TWebControls\TAjaxGrid\bin\Debug\Newtonsoft.Json.dll
+D:\Repositorios\ARQUITETURA\componentes\TWebControls\TAjaxGrid\obj\Debug\Arquitetura.Web.WebControls.Grid.csprojResolveAssemblyReference.cache
+D:\Repositorios\ARQUITETURA\componentes\TWebControls\TAjaxGrid\obj\Debug\Arquitetura.Web.WebControls.Grid.dll
+D:\Repositorios\ARQUITETURA\componentes\TWebControls\TAjaxGrid\obj\Debug\Arquitetura.Web.WebControls.Grid.pdb

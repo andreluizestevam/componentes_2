@@ -1,0 +1,33 @@
+﻿#wrapper {
+	width: 300px;
+	height: 100px;
+	float: left;
+	position: relative;
+}
+
+#fileinput {
+	position: absolute;
+	width: 75px;
+	height: 26px;
+	top: 0;
+	left: 0;
+	visibility: hidden;
+}
+
+#browse {
+	position: absolute;
+	width: 75px;
+	height: 26px;
+	top: 0;
+	left: 0;
+	background: url(..\Images\confirm.gif) left top no-repeat;
+}
+
+#filename {
+	position: absolute;
+	width: 175px;
+	height: 26px;
+	left: 75px;
+	text-align: center;
+	background: url(..\Images\error.gif) left top no-repeat;
+}

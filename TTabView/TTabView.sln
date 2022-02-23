@@ -1,0 +1,67 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TTabView", "TTabView\TTabView.csproj", "{2D314706-0634-4EBB-A9FA-575335DBE91D}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WebSite1", "WebSite1", "{94F8E822-4A43-43F0-96D3-2A99152F144A}"
+	ProjectSection(WebsiteProperties) = preProject
+		SccProjectName = "SAK"
+		SccAuxPath = "SAK"
+		SccLocalPath = "SAK"
+		SccProvider = "SAK"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv3.5"
+		ProjectReferences = "{2D314706-0634-4EBB-A9FA-575335DBE91D}|TTabView.dll;"
+		Debug.AspNetCompiler.VirtualPath = "/WebSite1"
+		Debug.AspNetCompiler.PhysicalPath = "WebSite1\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\WebSite1\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/WebSite1"
+		Release.AspNetCompiler.PhysicalPath = "WebSite1\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\WebSite1\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "15918"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 3
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://10.31.0.21:8080/tfs/defaultcollection
+		SccLocalPath0 = .
+		SccWebProject1 = true
+		SccProjectUniqueName1 = WebSite1
+		SccProjectName1 = WebSite1
+		SccLocalPath1 = WebSite1
+		SccProjectEnlistmentChoice1 = 2
+		SccProjectUniqueName2 = TTabView\\TTabView.csproj
+		SccProjectName2 = TTabView
+		SccLocalPath2 = TTabView
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2D314706-0634-4EBB-A9FA-575335DBE91D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D314706-0634-4EBB-A9FA-575335DBE91D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D314706-0634-4EBB-A9FA-575335DBE91D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D314706-0634-4EBB-A9FA-575335DBE91D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94F8E822-4A43-43F0-96D3-2A99152F144A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94F8E822-4A43-43F0-96D3-2A99152F144A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94F8E822-4A43-43F0-96D3-2A99152F144A}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
+EndGlobal

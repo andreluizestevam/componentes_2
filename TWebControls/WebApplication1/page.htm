@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <script src="JavaScript/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <script src="JavaScript/JqueryValidation/jquery.validate.js" type="text/javascript"></script>
+    <script src="JavaScript/JqueryValidation/additional-methods.js" type="text/javascript"></script>
+    <script>
+        $.validator.setDefaults({
+            submitHandler: function () { alert("submitted!"); }
+        });
+
+        $(document).ready(function () {
+
+            jQuery.validator.addMethod("rangeDecimal", function (value, element, param) {
+                
+                var valueD = value.replace('.', '').replace(',', '.');
+                return this.optional(element) || (valueD >= param[0] && valueD <= param[1]);
+            }, "O valor deve estar entre {0} e {1}");
+
+
+
+            $("#frm").validate();
+
+
+            $("#frm").validate({
+                rules: {
+                    namete: {
+                        required: true,
+                        number: 2
+                    }
+                }
+            });
+
+            $("#namete").rules("add", { required: true, rangeDecimal: [-99.99, 99.99] });
+        });
+
+    </script>
+    <title></title>
+</head>
+<body>
+    <div>
+        <form id="frm" name="frm">
+        <input type="text" id="namete" name="namete" />
+        <input class="submit" type="submit" value="Submit" />
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,83 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TFileUpload", "TFileUpload\TFileUpload\TFileUpload.csproj", "{5D56C129-68E5-4A56-8E39-BC170C5F0A48}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TMultiBox", "TMultiBox\TMultiBox\TMultiBox.csproj", "{ED9D53A0-12C1-49D4-A2D8-DD1BBC4BDF74}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TPopup", "TPopup\TPopup\TPopup.csproj", "{C40237E9-3C1F-4C0C-9669-204BA7FCAA91}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TTabView", "TTabView\TTabView\TTabView.csproj", "{2D314706-0634-4EBB-A9FA-575335DBE91D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TTextArea", "TTextArea\TTextArea\TTextArea.csproj", "{261EEA93-E72D-4EAD-84FA-01B49C02E639}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TTreeView", "TTreeView\TTreeView\TTreeView.csproj", "{AE31F9AF-86C7-44ED-9F89-F11AEC3AD7EC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TUpdateProgress", "TUpdateProgress\TUpdateProgress\TUpdateProgress.csproj", "{B8D01F79-8970-40A1-86CB-618723C84989}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 8
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://10.31.0.21:8080/tfs/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = TFileUpload\\TFileUpload\\TFileUpload.csproj
+		SccProjectName1 = TFileUpload/TFileUpload
+		SccLocalPath1 = TFileUpload\\TFileUpload
+		SccProjectUniqueName2 = TMultiBox\\TMultiBox\\TMultiBox.csproj
+		SccProjectName2 = TMultiBox/TMultiBox
+		SccLocalPath2 = TMultiBox\\TMultiBox
+		SccProjectUniqueName3 = TPopup\\TPopup\\TPopup.csproj
+		SccProjectName3 = TPopup/TPopup
+		SccLocalPath3 = TPopup\\TPopup
+		SccProjectUniqueName4 = TTabView\\TTabView\\TTabView.csproj
+		SccProjectName4 = TTabView/TTabView
+		SccLocalPath4 = TTabView\\TTabView
+		SccProjectUniqueName5 = TTextArea\\TTextArea\\TTextArea.csproj
+		SccProjectName5 = TTextArea/TTextArea
+		SccLocalPath5 = TTextArea\\TTextArea
+		SccProjectUniqueName6 = TTreeView\\TTreeView\\TTreeView.csproj
+		SccProjectName6 = TTreeView/TTreeView
+		SccLocalPath6 = TTreeView\\TTreeView
+		SccProjectUniqueName7 = TUpdateProgress\\TUpdateProgress\\TUpdateProgress.csproj
+		SccProjectName7 = TUpdateProgress/TUpdateProgress
+		SccLocalPath7 = TUpdateProgress\\TUpdateProgress
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5D56C129-68E5-4A56-8E39-BC170C5F0A48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D56C129-68E5-4A56-8E39-BC170C5F0A48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D56C129-68E5-4A56-8E39-BC170C5F0A48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D56C129-68E5-4A56-8E39-BC170C5F0A48}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED9D53A0-12C1-49D4-A2D8-DD1BBC4BDF74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED9D53A0-12C1-49D4-A2D8-DD1BBC4BDF74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED9D53A0-12C1-49D4-A2D8-DD1BBC4BDF74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED9D53A0-12C1-49D4-A2D8-DD1BBC4BDF74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C40237E9-3C1F-4C0C-9669-204BA7FCAA91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C40237E9-3C1F-4C0C-9669-204BA7FCAA91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C40237E9-3C1F-4C0C-9669-204BA7FCAA91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C40237E9-3C1F-4C0C-9669-204BA7FCAA91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D314706-0634-4EBB-A9FA-575335DBE91D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D314706-0634-4EBB-A9FA-575335DBE91D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D314706-0634-4EBB-A9FA-575335DBE91D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D314706-0634-4EBB-A9FA-575335DBE91D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{261EEA93-E72D-4EAD-84FA-01B49C02E639}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{261EEA93-E72D-4EAD-84FA-01B49C02E639}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{261EEA93-E72D-4EAD-84FA-01B49C02E639}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{261EEA93-E72D-4EAD-84FA-01B49C02E639}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE31F9AF-86C7-44ED-9F89-F11AEC3AD7EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE31F9AF-86C7-44ED-9F89-F11AEC3AD7EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE31F9AF-86C7-44ED-9F89-F11AEC3AD7EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE31F9AF-86C7-44ED-9F89-F11AEC3AD7EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8D01F79-8970-40A1-86CB-618723C84989}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8D01F79-8970-40A1-86CB-618723C84989}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8D01F79-8970-40A1-86CB-618723C84989}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8D01F79-8970-40A1-86CB-618723C84989}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

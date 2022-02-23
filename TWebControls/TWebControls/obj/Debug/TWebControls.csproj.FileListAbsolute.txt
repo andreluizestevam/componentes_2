@@ -1,0 +1,7 @@
+D:\Repositorios\ARQUITETURA\componentes\TWebControls\TWebControls\bin\Debug\Arquitetura.Web.WebControls.dll
+D:\Repositorios\ARQUITETURA\componentes\TWebControls\TWebControls\bin\Debug\Arquitetura.Web.WebControls.pdb
+D:\Repositorios\ARQUITETURA\componentes\TWebControls\TWebControls\bin\Debug\Arquitetura.TechBiz.Messages.dll
+D:\Repositorios\ARQUITETURA\componentes\TWebControls\TWebControls\bin\Debug\Arquitetura.TechBiz.Web.dll
+D:\Repositorios\ARQUITETURA\componentes\TWebControls\TWebControls\bin\Debug\Newtonsoft.Json.dll
+D:\Repositorios\ARQUITETURA\componentes\TWebControls\TWebControls\obj\Debug\Arquitetura.Web.WebControls.dll
+D:\Repositorios\ARQUITETURA\componentes\TWebControls\TWebControls\obj\Debug\Arquitetura.Web.WebControls.pdb

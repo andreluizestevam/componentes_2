@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TTextArea", "TTextArea\TTextArea.csproj", "{261EEA93-E72D-4EAD-84FA-01B49C02E639}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSite1", "WebSite1\WebSite1.csproj", "{01D40216-08D5-43D6-8EAE-0F6EB64EEB96}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 3
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://10.31.0.21:8080/tfs/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = TTextArea\\TTextArea.csproj
+		SccProjectName1 = TTextArea
+		SccLocalPath1 = TTextArea
+		SccProjectUniqueName2 = WebSite1\\WebSite1.csproj
+		SccProjectName2 = WebSite1
+		SccLocalPath2 = WebSite1
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{261EEA93-E72D-4EAD-84FA-01B49C02E639}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{261EEA93-E72D-4EAD-84FA-01B49C02E639}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{261EEA93-E72D-4EAD-84FA-01B49C02E639}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{261EEA93-E72D-4EAD-84FA-01B49C02E639}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01D40216-08D5-43D6-8EAE-0F6EB64EEB96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01D40216-08D5-43D6-8EAE-0F6EB64EEB96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01D40216-08D5-43D6-8EAE-0F6EB64EEB96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

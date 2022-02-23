@@ -1,0 +1,54 @@
+﻿<%--
+Default skin template. The following skins are provided as examples only.
+
+1. Named control skin. The SkinId should be uniquely defined because
+   duplicate SkinId's per control type are not allowed in the same theme.
+
+<asp:GridView runat="server" SkinId="gridviewSkin" BackColor="White" >
+   <AlternatingRowStyle BackColor="Blue" />
+</asp:GridView>
+
+2. Default skin. The SkinId is not defined. Only one default 
+   control skin per control type is allowed in the same theme.
+
+<asp:Image runat="server" ImageUrl="~/images/image1.jpg" />
+--%>
+<ifr:TMessageBox MessageOption="Information" Title="Caixa de Mensagem" runat="server">
+    <ContainerStyle CssClass="containerEstilo" />
+    <HeaderStyle CssClass="headerEstilo" />
+    <BodyStyle CssClass="bodyEstilo" />
+    <ModalStyle CssClass="modalBackground" />
+    <ButtonStyle CssClass="botao" />
+    <FooterStyle CssClass="footerEstilo" />
+    <IconStyle />
+</ifr:TMessageBox>
+
+<ifr:TConfirmBox Title="Caixa de Mensagem" runat="server">
+    <ContainerStyle CssClass="containerEstilo" />
+    <HeaderStyle CssClass="headerEstilo" />
+    <BodyStyle CssClass="bodyEstilo" HorizontalAlign="Center" />
+    <FooterStyle CssClass="footerEstilo" />
+    <ButtonCancelStyle CssClass="botao"/>
+    <ButtonOkStyle CssClass="botao"/>
+    <ModalStyle CssClass="modalBackground" />
+</ifr:TConfirmBox>
+
+<ifr:TInputBox Title="Caixa de Mensagem" runat="server">
+    <ContainerStyle CssClass="containerEstilo" />
+    <HeaderStyle CssClass="headerEstilo" />
+    <BodyStyle CssClass="bodyEstilo" />
+    <InputStyle Width="150" />
+    <WatermarkStyle CssClass="modalWatermark" />
+    <FooterStyle CssClass="footerEstilo" />
+    <ButtonCancelStyle CssClass="botao"/>
+    <ButtonOkStyle CssClass="botao"/>
+    <ModalStyle CssClass="modalBackground" />
+</ifr:TInputBox>
+
+<ifr:TPopupBox Title="Caixa de Mensagem" runat="server">
+    <ContainerStyle CssClass="containerEstilo" />
+    <HeaderStyle CssClass="headerEstilo" />
+    <BodyStyle CssClass="bodyEstilo" />
+    <FooterStyle CssClass="footerEstilo" />
+    <ModalStyle CssClass="modalBackground" />
+</ifr:TPopupBox>

@@ -1,0 +1,165 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.ComponentModel;
+
+namespace Arquitetura.Web.WebControls
+{
+    /// <summary>
+    /// 
+    /// </summary>
+    [ParseChildren(true)]
+    [PersistChildren(true)]
+    [Themeable(true)]
+    public sealed class TMailBox : WebControl, IScriptControl
+    {
+        #region Atributos
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private ScriptManager sMgr;
+
+        #endregion
+
+        #region Propriedades
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [PersistenceMode(PersistenceMode.EncodedInnerDefaultProperty)]
+        [Bindable(true, BindingDirection.TwoWay)]
+        [Category("Appearance")]
+        [DefaultValue("")]
+        public string Text
+        {
+            set { this.ViewState["_!Text"] = value; }
+            get
+            {
+                if (this.ViewState["_!Text"] == null)
+                {
+                    this.ViewState["_!Text"] = string.Empty;
+                }
+                return this.ViewState["_!Text"].ToString();
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [PersistenceMode(PersistenceMode.EncodedInnerDefaultProperty)]
+        [Bindable(true, BindingDirection.TwoWay)]
+        [Category("Behavior")]
+        [DefaultValue(-1)]
+        public int MaxCount
+        {
+            set { this.ViewState["_!MaxCount"] = value; }
+            get
+            {
+                if (this.ViewState["_!MaxCount"] == null)
+                {
+                    this.ViewState["_!MaxCount"] = -1;
+                }
+                return (int)this.ViewState["_!MaxCount"];
+            }
+        }
+
+        #endregion
+
+        #region Metodos
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<ScriptDescriptor> GetScriptDescriptors()
+        {
+            ScriptControlDescriptor descriptor = new ScriptControlDescriptor("Arquitetura.Web.WebControls.TMailBox", this.ClientID);
+
+            descriptor.AddProperty("maxCount", this.MaxCount.ToString());
+            descriptor.AddProperty("maskValid", @"^([a-zA-Z0-9])+([a-zA-Z0-9_\.\-])*\@([a-zA-Z0-9]){1}(([a-zA-Z0-9\-])+\.)*([a-zA-Z0-9]{2,4})+$");
+
+            return new ScriptDescriptor[] { descriptor };
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<ScriptReference> GetScriptReferences()
+        {
+            ScriptReference reference = new ScriptReference();
+            reference.Assembly = "TMultiMask";
+            reference.Name = "Arquitetura.Web.WebControls.Resources.TMailBox.js";
+
+            return new ScriptReference[] { reference };
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="e"></param>
+        protected override void OnPreRender(EventArgs e)
+        {
+            if (!this.DesignMode)
+            {
+                sMgr = ScriptManager.GetCurrent(Page);
+
+                if (sMgr == null)
+                {
+                    throw new HttpException("A ScriptManager control must exist on the page.");
+                }
+
+                sMgr.RegisterScriptControl(this);
+            }
+
+            base.OnPreRender(e);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="e"></param>
+        protected override void OnLoad(EventArgs e)
+        {
+            if (this.Page.IsPostBack)
+            {
+                string strValues = this.Page.Request.Form[string.Concat(this.ID, "_VALUES").ToUpper()];
+
+                string[] arrValues = strValues.Split(new string[] { ";" }, StringSplitOptions.RemoveEmptyEntries);
+
+                string strNewValues = string.Join(";", arrValues);
+
+                this.Text = strNewValues;
+            }
+
+            this.Page.ClientScript.RegisterHiddenField(string.Concat(this.ID, "_VALUES").ToUpper(), this.Text);
+
+            base.OnLoad(e);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="writer"></param>
+        protected override void Render(HtmlTextWriter writer)
+        {
+            if (!this.DesignMode)
+            {
+                sMgr.RegisterScriptDescriptors(this);
+            }
+
+            // render div
+            writer.WriteBeginTag("div");
+            writer.WriteAttribute("id", this.ID);
+            writer.WriteAttribute("style", string.Format("overflow-x: hidden; overflow-y: auto; width: {0}; height: {1}; border:1px solid #ccc;", this.Width.ToString(), this.Height.ToString()));
+            writer.Write(">");
+
+            writer.WriteEndTag("div");
+        }
+
+        #endregion
+    }
+}

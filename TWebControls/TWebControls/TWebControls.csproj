@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{06F375BF-BF92-434F-A582-5A7AB2CC671C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Arquitetura.Web.WebControls</RootNamespace>
+    <AssemblyName>Arquitetura.Web.WebControls</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Arquitetura.TechBiz.Messages">
+      <HintPath>..\..\..\libraries\arqtechbiz_v1_2\Arquitetura.TechBiz.Messages.dll</HintPath>
+    </Reference>
+    <Reference Include="Arquitetura.TechBiz.Web">
+      <HintPath>..\..\..\libraries\arqtechbiz_v1_2\Arquitetura.TechBiz.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\Referencias\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Buttons\TDownloadCommand.cs" />
+    <Compile Include="Buttons\TMessageImageButton.cs" />
+    <Compile Include="Buttons\TMessageButton.cs" />
+    <Compile Include="Buttons\TButton.cs" />
+    <Compile Include="Controls\TFileUpload.cs" />
+    <Compile Include="Controls\TBaseTextBox.cs" />
+    <Compile Include="Controls\TCheckBoxList.cs" />
+    <Compile Include="Controls\TCheckBox.cs" />
+    <Compile Include="Controls\TDateTime.cs" />
+    <Compile Include="Controls\TDropDownList.cs" />
+    <Compile Include="Controls\TListBox.cs" />
+    <Compile Include="Controls\TMultiBox.cs" />
+    <Compile Include="Controls\TMultiSelect.cs" />
+    <Compile Include="Controls\TPopup.cs" />
+    <Compile Include="Controls\TRadioButton.cs" />
+    <Compile Include="Controls\TRadioButtonList.cs" />
+    <Compile Include="Controls\TTextArea.cs" />
+    <Compile Include="Controls\TTextBox.cs" />
+    <Compile Include="Controls\TTreeView.cs" />
+    <Compile Include="Enumerators\EMessageBehavior.cs" />
+    <Compile Include="Enumerators\EMessageButtonType.cs" />
+    <Compile Include="Enumerators\EMaskType.cs" />
+    <Compile Include="Enumerators\EScriptType.cs" />
+    <Compile Include="Enumerators\EValidationType.cs" />
+    <Compile Include="Interface\ITLabelControl.cs" />
+    <Compile Include="Interface\IValidationControl.cs" />
+    <Compile Include="Interface\IValidation.cs" />
+    <Compile Include="Client\ClientValidation.cs" />
+    <Compile Include="MessageBox\TMessageButton.cs" />
+    <Compile Include="MessageBox\TClientMessage.cs" />
+    <Compile Include="MessageBox\TResponseClient.cs" />
+    <Compile Include="Utils\ControlUtils.cs" />
+    <Compile Include="Interface\ITControl.cs" />
+    <Compile Include="CustomProperties\LabelOptions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="CustomProperties\ValidationOptions.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CSSDefault\DefaultImages\setaValidation.png" />
+    <None Include="CSSDefault\DefaultImages\confirm.gif" />
+    <None Include="CSSDefault\DefaultImages\error.gif" />
+    <None Include="CSSDefault\DefaultImages\information.gif" />
+    <None Include="CSSDefault\DefaultImages\question.gif" />
+    <None Include="CSSDefault\DefaultImages\warning.gif" />
+    <None Include="CSSDefault\DefaultImages\btn_calendario.gif" />
+    <Content Include="CSSDefault\DefaultImages\UpdateProgress.gif" />
+    <Content Include="JavaScript\jquery-1.7.2.min.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CSSDefault\Control.css" />
+    <None Include="CSSDefault\DefaultImages\ui-bg_diagonals-thick_90_eeeeee_40x40.png" />
+    <None Include="CSSDefault\DefaultImages\ui-bg_flat_15_cd0a0a_40x100.png" />
+    <None Include="CSSDefault\DefaultImages\ui-bg_glass_100_e4f1fb_1x400.png" />
+    <None Include="CSSDefault\DefaultImages\ui-bg_glass_50_3baae3_1x400.png" />
+    <None Include="CSSDefault\DefaultImages\ui-bg_glass_80_d7ebf9_1x400.png" />
+    <None Include="CSSDefault\DefaultImages\ui-bg_highlight-hard_100_f2f5f7_1x100.png" />
+    <None Include="CSSDefault\DefaultImages\ui-bg_highlight-hard_70_000000_1x100.png" />
+    <None Include="CSSDefault\DefaultImages\ui-bg_highlight-soft_100_deedf7_1x100.png" />
+    <None Include="CSSDefault\DefaultImages\ui-bg_highlight-soft_25_ffef8f_1x100.png" />
+    <None Include="CSSDefault\DefaultImages\ui-icons_2694e8_256x240.png" />
+    <None Include="CSSDefault\DefaultImages\ui-icons_2e83ff_256x240.png" />
+    <None Include="CSSDefault\DefaultImages\ui-icons_3d80b3_256x240.png" />
+    <None Include="CSSDefault\DefaultImages\ui-icons_72a7cf_256x240.png" />
+    <None Include="CSSDefault\DefaultImages\ui-icons_ffffff_256x240.png" />
+    <None Include="CSSDefault\jquery-ui-1.8.21.custom.css" />
+    <None Include="CSSDefault\jquery.jgrowl.css" />
+    <Content Include="JavaScript\jquery-ui-1.8.20.custom.min.js" />
+    <Content Include="JavaScript\jquery.cookie.js" />
+    <Content Include="JavaScript\jquery.metadata.js" />
+    <Content Include="JavaScript\jquery-ui-timepicker-addon.js" />
+    <None Include="JavaScript\jquery.inputmask.date.extentions.js" />
+    <None Include="JavaScript\jquery.inputmask.extentions.js" />
+    <None Include="JavaScript\jquery.inputmask.js" />
+    <None Include="JavaScript\jquery.inputmask.numeric.extentions.js" />
+    <None Include="JavaScript\TechBiz.formatInputs.js" />
+    <None Include="JavaScript\Techbiz.Mask.DateTime.js" />
+    <None Include="JavaScript\Techbiz.TTextBox.Mask.js" />
+    <None Include="JavaScript\Techbiz.Mask.Number.js" />
+    <Content Include="JavaScript\jquery.jgrowl.js" />
+    <Content Include="JavaScript\jquery.simplemodal-1.4.2.js" />
+    <Content Include="JavaScript\TechBiz.messageBox.js" />
+    <Content Include="JavaScript\Techbiz.multiSelectControl.js" />
+    <Content Include="JavaScript\jquery.searchabledropdown-1.0.7.src.js" />
+    <Content Include="JavaScript\Techbiz.Principal.js" />
+    <Content Include="JavaScript\TechBiz.stringUtils.js" />
+    <Content Include="JavaScript\Techbiz.TButtonDownload.js" />
+    <Content Include="JavaScript\TechBiz.textAreaControl.js" />
+    <Content Include="JavaScript\jquery.additional-methods.js" />
+    <Content Include="JavaScript\jquery.validate.js" />
+    <Content Include="JavaScript\TechBiz.fieldValueValidate.js" />
+    <Content Include="JavaScript\TechBiz.fieldValidationServer.js" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="BeforeBuild">
+    <ItemGroup>
+      <EmbeddedResource Include="JavaScript\*.*">
+      </EmbeddedResource>
+    </ItemGroup>
+  </Target>
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

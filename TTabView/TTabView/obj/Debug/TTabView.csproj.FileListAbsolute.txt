@@ -1,0 +1,5 @@
+D:\Repositorios\ARQUITETURA\componentes\TTabView\TTabView\bin\Debug\Arquitetura.Web.WC.TTabView.dll
+D:\Repositorios\ARQUITETURA\componentes\TTabView\TTabView\bin\Debug\Arquitetura.Web.WC.TTabView.pdb
+D:\Repositorios\ARQUITETURA\componentes\TTabView\TTabView\obj\Debug\TTabView.csprojResolveAssemblyReference.cache
+D:\Repositorios\ARQUITETURA\componentes\TTabView\TTabView\obj\Debug\Arquitetura.Web.WC.TTabView.dll
+D:\Repositorios\ARQUITETURA\componentes\TTabView\TTabView\obj\Debug\Arquitetura.Web.WC.TTabView.pdb

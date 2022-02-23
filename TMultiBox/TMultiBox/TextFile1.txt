@@ -1,0 +1,408 @@
+﻿Type.registerNamespace("Arquitetura.Web.WebControls");
+
+//criando construtor
+Arquitetura.Web.WebControls.TMailBox = function (element) {
+    Arquitetura.Web.WebControls.TMailBox.initializeBase(this, [element]);
+    // create vars
+    this._ul = null;
+    this._count = 0;
+    this.maxCount = 0;
+    this.maskValid = "";
+}
+
+//definindo classe
+Arquitetura.Web.WebControls.TMailBox.prototype = {
+    initialize: function () {
+        // initialize
+        Arquitetura.Web.WebControls.TMailBox.callBaseMethod(this, 'initialize');
+
+        // create list
+        this._ul = this.create_ul();
+
+        // get div
+        var container = this.get_element();
+
+        // add ul
+        container.appendChild(this._ul);
+
+        // add events
+        $addHandlers(container, { 'mousedown': this._onMouseDown }, this);
+    },
+    dispose: function () {
+        $clearHandlers(this.get_element());
+        Arquitetura.Web.WebControls.TMailBox.callBaseMethod(this, 'dispose');
+    },
+    create_ul: function () {
+        // create ul
+        var control = document.createElement('ul');
+
+        // set id
+        control.id = this.get_element().id + "_ul";
+
+        // apply style
+        control.style.display = "inline-block";
+        control.style.padding = "2px";
+        control.style.margin = "0px";
+        control.style.lineHeight = "25px";
+
+        // get values
+        var values = this.get_hfValues();
+
+        if (values == null) {
+            // create default li
+            this.add_li(control, "");
+        }
+        else {
+            // add split values
+            var arrValues = values.split(";");
+
+            for (var i = 0; i < arrValues.length; i++) {
+                var text = arrValues[i].toString();
+                if (text.length > 0) {
+                    this.add_li(control, text);
+                }
+            }
+
+            // create default li
+            this.add_li(control, "");
+        }
+
+        // return
+        return control;
+    },
+    add_li: function (parent, text) {
+        // check max count
+        if (this.maxCount != -1
+            && parent.childNodes.length >= this.maxCount) {
+            return;
+        }
+
+        // create li
+        var control = document.createElement('li');
+
+        // set id
+        control.id = parent.id + "_li" + this._count;
+
+        // increment count children
+        this._count++;
+
+        // apply style
+        control.style.display = "inline";
+        control.style.padding = "2px 2px 2px 3px";
+
+        // add input
+        var input = this.create_input(control.id, text);
+        control.appendChild(input);
+
+        // add span
+        var span = this.create_span(control.id, text);
+        control.appendChild(span);
+
+        // set visibility
+        if (text.length > 0) {
+            input.style.display = "none";
+            span.style.display = "inline";
+        }
+        else {
+            input.style.display = "inline";
+            span.style.display = "none";
+        }
+
+        // add parent
+        parent.appendChild(control);
+    },
+    remove_li: function (li) {
+        //        // get elements
+        //        var input = $get(li.id + "_input");
+        //        var span1 = $get(li.id + "_spantext");
+        //        var span2 = $get(li.id + "_spanclose");
+
+        //        // remove events
+        //        $removeHandler(input, 'keydown', this._onKeyDown);
+        //        $removeHandler(input, 'blur', this._onBlur);
+        //        $removeHandler(span1, 'mousedown', this._onFocus);
+        //        $removeHandler(span2, 'click', this._onClick);
+
+        // remove item
+        this._ul.removeChild(li);
+    },
+    create_input: function (parent_id, text) {
+        // create input
+        var input = document.createElement('input');
+
+        // set id
+        input.id = parent_id + "_input";
+
+        // apply style
+        input.style.display = 'inline';
+        //input.style.width = "100%";
+        input.style.border = "1px solid #ccc";
+        input.style.fontFamily = "Arial";
+        input.style.fontSize = "12px";
+
+        // set text
+        input.value = text;
+
+        // add events
+        $addHandlers(input, { 'keydown': this._onKeyDown }, this);
+        $addHandlers(input, { 'blur': this._onBlur }, this);
+
+        // return
+        return input;
+    },
+    create_span: function (parent_id, text) {
+        // create container
+        var container = document.createElement('div');
+
+        // set id
+        container.id = parent_id + "_span";
+
+        // apply style
+        container.style.display = 'inline';
+        container.style.border = "1px solid #ccc";
+        container.style.backgroundColor = "#EFF6F8";
+        container.style.fontFamily = "Arial";
+        container.style.fontSize = "12px";
+        container.style.padding = "2px 2px 2px 2px";
+
+        //===============================================================
+        // create span
+        var span1 = document.createElement('span');
+
+        // set id
+        span1.id = parent_id + "_spantext";
+
+        // set text
+        span1.innerText = text;
+
+        // add events
+        $addHandlers(span1, { 'mousedown': this._onFocus }, this);
+
+        //===============================================================
+        // create span
+        var span2 = document.createElement('span');
+
+        // set id
+        span2.id = parent_id + "_spanclose";
+
+        // apply style
+        span2.style.borderLeft = "1px solid #ccc";
+
+        // set text
+        span2.innerText = "  x ";
+
+        // add events
+        $addHandlers(span2, { 'click': this._onClick }, this);
+
+        //===============================================================
+        // create span
+        var span3 = document.createElement('span');
+
+        // set text
+        span3.innerText = "  ";
+
+        //===============================================================
+        //add container
+        container.appendChild(span1);
+        container.appendChild(span3);
+        container.appendChild(span2);
+
+        // return
+        return container;
+    },
+    //evento onclick
+    _onClick: function (e) {
+        //$get("trace").innerText += "\r\onclick:" + e.target.id;
+
+        // get li
+        var li = $get(e.target.id.replace("_spanclose", ""));
+
+        // remove li
+        this.remove_li(li);
+
+        // add new li, if allow
+        this.add_li(this._ul, "");
+
+        // call mousedown
+        this._onMouseDown(e);
+    },
+    //evento onkeydown
+    _onKeyDown: function (e) {
+        //$get("trace").innerText += "\r\onkeydown:" + e.target.id;
+
+        // capture keycode tab
+        if (e.keyCode == 9) {
+            // call focus
+            this.get_element().focus();
+        }
+        // capture keycode ;
+        if (e.keyCode == 191) {
+            // cancel key
+            event.returnValue = false;
+
+            // call onblur
+            this._onBlur(e);
+        }
+    },
+    //evento onblur
+    _onBlur: function (e) {
+        //$get("trace").innerText += "\r\onblur:" + e.target.id;
+
+        // get input
+        var input = e.target;
+
+        // validating event
+        if (input.style.display != 'inline') {
+            //$get("trace").innerText += "\r\onblur cancel:" + e.target.id;
+
+            return;
+        }
+
+        // get span
+        var span = $get(input.id.replace("_input", "_span"));
+        var span2 = $get(input.id.replace("_input", "_spantext"));
+
+        // set text
+        span2.innerText = input.value;
+
+        if (input.value.length > 0) {
+            var rgx = new RegExp(this.maskValid, "");
+
+            if (!rgx.test(input.value)) {
+                this.set_cursorEndText(input);
+
+                event.returnValue = false;
+
+                return;
+            }
+
+            // refresh values
+            this.refreshValues();
+
+            // if last child add new li
+            var li = $get(span.id.replace("_span", ""));
+
+            if (li.id == this._ul.lastChild.id) {
+                // add new li
+                this.add_li(this._ul, "");
+            }
+
+            // set visibility
+            input.style.display = "none";
+            span.style.display = "inline";
+
+            // call mousedown
+            this._onMouseDown(e);
+        }
+    },
+    //evento onfocus
+    _onFocus: function (e) {
+        //$get("trace").innerText += "\r\onfocus:" + e.target.id;
+
+        // get span
+        var span2 = e.target;
+        var span = $get(span2.id.replace("_spantext", "_span"));
+
+        // get input
+        var input = $get(span2.id.replace("_spantext", "_input"));
+
+        // set text
+        input.value = span2.innerText;
+
+        // set visibility
+        input.style.display = "inline";
+        span.style.display = "none";
+
+        // set cursor
+        this.set_cursorEndText(input);
+    },
+    //evento onmousecdown
+    _onMouseDown: function (e) {
+        //$get("trace").innerText += "\r\onmousedown:" + e.target.id;
+
+        // cancel mousedown span
+        if (e.target.id.indexOf("_spantext") != -1) {
+            event.returnValue = false;
+            return;
+        }
+        // cancel mousedown input 
+        if (e.target.id.indexOf("_input") != -1
+            && e.target.style.display == 'inline') {
+            event.returnValue = false;
+            return;
+        }
+
+        //$get("trace").innerText += "\r\onmousedown set focus:" + this._ul.lastChild.id + "_input";
+
+        // get input
+        var input = $get(this._ul.lastChild.id + "_input");
+
+        // check display
+        if (input.style.display == 'none') {
+            event.returnValue = false;
+            return;
+        }
+
+        // call focus
+        input.focus();
+    },
+    // metodo para colocar o cursos no final do texto do input
+    set_cursorEndText: function (input) {
+        if (input.createTextRange) {
+            var fr = input.createTextRange();
+            fr.moveStart('character', input.value.length);
+            fr.collapse();
+            fr.select();
+        }
+        else {
+            input.value = input.value;
+        }
+    },
+    // metodo para atualizar os valores do hidden
+    refreshValues: function () {
+        var values = "";
+        var count = this._ul.childNodes.length;
+
+        for (var i = 0; i < count; i++) {
+            // get input
+            var input = $get(this._ul.childNodes[i].id + "_input");
+
+            if (input.value.length > 0) {
+                //set text
+                values += input.value + ";";
+            }
+        }
+
+        this.set_hfValues(values);
+    },
+    set_hfValues: function (values) {
+        var hf = $get(this.get_element().id.toUpperCase() + "_VALUES");
+        hf.value = values.toString();
+    },
+    get_hfValues: function () {
+        var hf = $get(this.get_element().id.toUpperCase() + "_VALUES");
+        return hf.value;
+    },
+    // get/set property maxCount 
+    set_maxCount: function (value) {
+        this.maxCount = value;
+    },
+    get_maxCount: function () {
+        return this.maxCount;
+    },
+    // get/set property maskValid
+    set_maskValid: function (value) {
+        this.maskValid = value;
+    },
+    get_maskValid: function () {
+        return this.maskValid;
+    }
+}
+
+//register class as a Sys.Control
+Arquitetura.Web.WebControls.TMailBox.registerClass('Arquitetura.Web.WebControls.TMailBox', Sys.UI.Control);
+
+//notify loaded
+if (typeof (Sys) !== 'undefined') {
+    Sys.Application.notifyScriptLoaded();
+}

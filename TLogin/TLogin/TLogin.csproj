@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D698C841-F0C2-403C-BFB6-99491C54ACF7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Arquitetura.Web.WC.TLogin</RootNamespace>
+    <AssemblyName>Arquitetura.Web.WC.TLogin</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Arquitetura.Common, Version=2.1.3684.21301, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\libraries\v2_1\Arquitetura.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Arquitetura.Configurations, Version=2.1.3684.21300, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\libraries\v2_1\Arquitetura.Configurations.dll</HintPath>
+    </Reference>
+    <Reference Include="Arquitetura.Web.Security, Version=2.1.3684.21302, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\libraries\v2_1\Arquitetura.Web.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Design" />
+    <Reference Include="System.Web" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TLoginName\TLoginName.cs" />
+    <Compile Include="TLoginName\TLoginNameDesigner.cs" />
+    <Compile Include="TLoginStatus\TLoginStatus.cs" />
+    <Compile Include="TLoginStatus\TLoginStatusDesigner.cs" />
+    <Compile Include="Utils\LoginUtil.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="TLoginName\.svn\prop-base\" />
+    <Folder Include="TLoginName\.svn\props\" />
+    <Folder Include="TLoginName\.svn\text-base\" />
+    <Folder Include="TLoginName\.svn\tmp\prop-base\" />
+    <Folder Include="TLoginName\.svn\tmp\props\" />
+    <Folder Include="TLoginName\.svn\tmp\text-base\" />
+    <Folder Include="TLoginStatus\.svn\prop-base\" />
+    <Folder Include="TLoginStatus\.svn\props\" />
+    <Folder Include="TLoginStatus\.svn\text-base\" />
+    <Folder Include="TLoginStatus\.svn\tmp\prop-base\" />
+    <Folder Include="TLoginStatus\.svn\tmp\props\" />
+    <Folder Include="TLoginStatus\.svn\tmp\text-base\" />
+    <Folder Include="Utils\.svn\prop-base\" />
+    <Folder Include="Utils\.svn\props\" />
+    <Folder Include="Utils\.svn\text-base\" />
+    <Folder Include="Utils\.svn\tmp\prop-base\" />
+    <Folder Include="Utils\.svn\tmp\props\" />
+    <Folder Include="Utils\.svn\tmp\text-base\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

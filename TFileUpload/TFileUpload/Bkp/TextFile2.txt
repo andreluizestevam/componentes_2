@@ -1,0 +1,92 @@
+﻿Type.registerNamespace("Arquitetura.Web.WebControls");
+
+//criando construtor
+Arquitetura.Web.WebControls.TFileUpload = function (element) {
+    Arquitetura.Web.WebControls.TFileUpload.initializeBase(this, [element]);
+
+    this._AllowMultiples = false;
+}
+
+//definindo classe
+Arquitetura.Web.WebControls.TFileUpload.prototype = {
+    initialize: function () {
+        // initialize
+        Arquitetura.Web.WebControls.TFileUpload.callBaseMethod(this, 'initialize');
+
+        // os eventos do asyncfileupload são independentes. isto e, nao utilizam a instancia.
+        // desta forma, os eventos nao podem ter referencia para a esta instancia.
+
+        // get afu
+        var afu = $get(this.get_element().id + "AFU");
+
+        // add handlers
+        afu.control.add_uploadComplete(this._onUploadComplete);
+        afu.control.add_uploadError(this._onUploadError);
+    },
+    dispose: function () {
+        $clearHandlers(this.get_element());
+        $clearHandlers($get(this.get_element().id + "AFU"));
+        Arquitetura.Web.WebControls.TFileUpload.callBaseMethod(this, 'dispose');
+    },
+    // evento
+    _onUploadComplete: function (sender, args) {
+        // get instance control
+        var control = $get(sender.get_element().id.replace("AFU", ""));
+
+        // build argument
+        var filename = args.get_fileName();
+        var filesize = args.get_length(); // (args.get_length() / 1024).toFixed(2) + " KB";
+        var filetype = args.get_contentType();
+
+        var argument = "UPLOADSUCCESS;" + filename + ";" + filesize + ";" + filetype;
+
+        // force call __doPostBack in upload error
+        javascript: __doPostBack(control.id, argument);
+        //        // get instance control
+        //        var control = $get(sender.get_element().id.replace("AFU", ""));
+
+        //        //  limpando
+        //        var hidden = sender.get_hiddenField();
+        //        hidden.value = "";
+
+        //        var input = sender.get_inputFile();
+        //        input.value = "";
+        //        input.style.backgroundColor = "white";
+
+        //        // verify if allow multiples
+        //        if (!control.getAttribute("allowMultiples")) {
+        //            input.setAttribute("disabled", true);
+        //        }
+    },
+    // evento
+    _onUploadError: function (sender, args) {
+        // get instance control
+        var control = $get(sender.get_element().id.replace("AFU", ""));
+
+        // build argument
+        var filename = args.get_fileName();
+        var filesize = args.get_length() != null ? args.get_length() : 0;
+        var statusMessage = args.get_errorMessage();
+
+        var argument = "UPLOADERROR;" + filename + ";" + filesize + ";" + statusMessage;
+
+        // force call __doPostBack in upload error
+        javascript: __doPostBack(control.id, argument);
+    },
+    set_AllowMultiples: function (value) {
+        this._AllowMultiples = value;
+        // pog - isso pq no evento do asyncupload nao compartilha os mesmos expandos, desta forma tem q usar o html
+        this.get_element().setAttribute("allowMultiples", value);
+    },
+    get_AllowMultiples: function () {
+        return this._AllowMultiples;
+    }
+}
+
+//register class as a Sys.Control
+Arquitetura.Web.WebControls.TFileUpload.registerClass('Arquitetura.Web.WebControls.TFileUpload', Sys.UI.Control);
+
+//notify loaded
+if (typeof (Sys) !== 'undefined') {
+    Sys.Application.notifyScriptLoaded();
+}

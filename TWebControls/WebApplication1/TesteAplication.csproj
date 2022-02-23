@@ -1,0 +1,546 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C35C4C70-5FC2-4A22-8B9A-88A920BDE693}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WebApplication1</RootNamespace>
+    <AssemblyName>WebApplication1</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Arquitetura.TechBiz.Web">
+      <HintPath>..\TWebControls\bin\Debug\Arquitetura.TechBiz.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=4.0.2.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\Referencias\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Images\loader.gif" />
+    <Content Include="App_Images\fechar.gif" />
+    <Content Include="App_Images\loaderb.gif" />
+    <Content Include="App_Images\TUpdateProgress.gif" />
+    <Content Include="Buttons.aspx" />
+    <Content Include="cors\postmessage.html" />
+    <Content Include="cors\result.html" />
+    <Content Include="CSS\Control.css" />
+    <Content Include="App_Images\btn_calendario.gif" />
+    <Content Include="App_Images\confirm.gif" />
+    <Content Include="App_Images\error.gif" />
+    <Content Include="App_Images\information.gif" />
+    <Content Include="App_Images\question.gif" />
+    <Content Include="App_Images\setaValidation.png" />
+    <Content Include="App_Images\ui-bg_diagonals-thick_90_eeeeee_40x40.png" />
+    <Content Include="App_Images\ui-bg_flat_15_cd0a0a_40x100.png" />
+    <Content Include="App_Images\ui-bg_glass_100_e4f1fb_1x400.png" />
+    <Content Include="App_Images\ui-bg_glass_50_3baae3_1x400.png" />
+    <Content Include="App_Images\ui-bg_glass_80_d7ebf9_1x400.png" />
+    <Content Include="App_Images\ui-bg_highlight-hard_100_f2f5f7_1x100.png" />
+    <Content Include="App_Images\ui-bg_highlight-hard_70_000000_1x100.png" />
+    <Content Include="App_Images\ui-bg_highlight-soft_100_deedf7_1x100.png" />
+    <Content Include="App_Images\ui-bg_highlight-soft_25_ffef8f_1x100.png" />
+    <Content Include="App_Images\ui-icons_2694e8_256x240.png" />
+    <Content Include="App_Images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="App_Images\ui-icons_3d80b3_256x240.png" />
+    <Content Include="App_Images\ui-icons_72a7cf_256x240.png" />
+    <Content Include="App_Images\ui-icons_ffffff_256x240.png" />
+    <Content Include="App_Images\warning.gif" />
+    <Content Include="CSS\jquery.fileupload-ui-noscript.css" />
+    <Content Include="CSS\jquery.fileupload-ui.css" />
+    <Content Include="CSS\style.css" />
+    <Content Include="CSS\ThemeBlue.css" />
+    <Content Include="Download.aspx" />
+    <Content Include="DropdownListValidation.aspx" />
+    <Content Include="Grid\JavaScript\css\ellipsis-xbl.xml" />
+    <Content Include="Grid\JavaScript\css\ui.jqgrid.css" />
+    <Content Include="Grid\JavaScript\json.js" />
+    <Content Include="Grid\JavaScript\js\Changes.txt" />
+    <Content Include="Grid\JavaScript\js\i18n\grid.locale-ar.js" />
+    <Content Include="Grid\JavaScript\js\i18n\grid.locale-bg.js" />
+    <Content Include="Grid\JavaScript\js\i18n\grid.locale-bg1251.js" />
+    <Content Include="Grid\JavaScript\js\i18n\grid.locale-cat.js" />
+    <Content Include="Grid\JavaScript\js\i18n\grid.locale-cn.js" />
+    <Content Include="Grid\JavaScript\js\i18n\grid.locale-cs.js" />
+    <Content Include="Grid\JavaScript\js\i18n\grid.locale-da.js" />
+    <Content Include="Grid\JavaScript\js\i18n\grid.locale-de.js" />
+    <Content Include="Grid\JavaScript\js\i18n\grid.locale-el.js" />
+    <Content Include="Grid\JavaScript\js\i18n\grid.locale-en.js" />
+    <Content Include="Grid\JavaScript\js\i18n\grid.locale-es.js" />
+    <Content Include="Grid\JavaScript\js\i18n\grid.locale-fa.js" />
+    <Content Include="Grid\JavaScript\js\i18n\grid.locale-fi.js" />
+    <Content Include="Grid\JavaScript\js\i18n\grid.locale-fr.js" />
+    <Content Include="Grid\JavaScript\js\i18n\grid.locale-gl.js" />
+    <Content Include="Grid\JavaScript\js\i18n\grid.locale-he.js" />
+    <Content Include="Grid\JavaScript\js\i18n\grid.locale-hr.js" />
+    <Content Include="Grid\JavaScript\js\i18n\grid.locale-hr1250.js" />
+    <Content Include="Grid\JavaScript\js\i18n\grid.locale-hu.js" />
+    <Content Include="Grid\JavaScript\js\i18n\grid.locale-is.js" />
+    <Content Include="Grid\JavaScript\js\i18n\grid.locale-it.js" />
+    <Content Include="Grid\JavaScript\js\i18n\grid.locale-ja.js" />
+    <Content Include="Grid\JavaScript\js\i18n\grid.locale-lt.js" />
+    <Content Include="Grid\JavaScript\js\i18n\grid.locale-mne.js" />
+    <Content Include="Grid\JavaScript\js\i18n\grid.locale-nl.js" />
+    <Content Include="Grid\JavaScript\js\i18n\grid.locale-no.js" />
+    <Content Include="Grid\JavaScript\js\i18n\grid.locale-pl.js" />
+    <Content Include="Grid\JavaScript\js\i18n\grid.locale-pt-br.js" />
+    <Content Include="Grid\JavaScript\js\i18n\grid.locale-pt.js" />
+    <Content Include="Grid\JavaScript\js\i18n\grid.locale-ro.js" />
+    <Content Include="Grid\JavaScript\js\i18n\grid.locale-ru.js" />
+    <Content Include="Grid\JavaScript\js\i18n\grid.locale-sk.js" />
+    <Content Include="Grid\JavaScript\js\i18n\grid.locale-sr-latin.js" />
+    <Content Include="Grid\JavaScript\js\i18n\grid.locale-sr.js" />
+    <Content Include="Grid\JavaScript\js\i18n\grid.locale-sv.js" />
+    <Content Include="Grid\JavaScript\js\i18n\grid.locale-th.js" />
+    <Content Include="Grid\JavaScript\js\i18n\grid.locale-tr.js" />
+    <Content Include="Grid\JavaScript\js\i18n\grid.locale-ua.js" />
+    <Content Include="Grid\JavaScript\js\install.txt" />
+    <Content Include="Grid\JavaScript\js\jquery.jqGrid.min.js" />
+    <Content Include="Grid\JavaScript\js\jquery.jqGrid.src.js" />
+    <Content Include="Grid\JavaScript\plugins\grid.addons.js" />
+    <Content Include="Grid\JavaScript\plugins\grid.postext.js" />
+    <Content Include="Grid\JavaScript\plugins\grid.setcolumns.js" />
+    <Content Include="Grid\JavaScript\plugins\jquery.contextmenu.js" />
+    <Content Include="Grid\JavaScript\plugins\jquery.searchFilter.js" />
+    <Content Include="Grid\JavaScript\plugins\jquery.tablednd.js" />
+    <Content Include="Grid\JavaScript\plugins\searchFilter.css" />
+    <Content Include="Grid\JavaScript\plugins\ui.multiselect.css" />
+    <Content Include="Grid\JavaScript\plugins\ui.multiselect.js" />
+    <Content Include="Grid\WebForm1.aspx" />
+    <Content Include="CSS\Images\btn_calendario.gif" />
+    <Content Include="CSS\Images\confirm.gif" />
+    <Content Include="CSS\Images\Container_Header.gif" />
+    <Content Include="CSS\Images\error.gif" />
+    <Content Include="CSS\Images\Grid_ActionDelete.gif" />
+    <Content Include="CSS\Images\Grid_Footer.gif" />
+    <Content Include="CSS\Images\Grid_Header.gif" />
+    <Content Include="CSS\Images\Grid_RowAlternate.gif" />
+    <Content Include="CSS\Images\Grid_RowHover.gif" />
+    <Content Include="CSS\Images\Grid_RowNormal.gif" />
+    <Content Include="CSS\Images\Grid_RowNumber.gif" />
+    <Content Include="CSS\Images\information.gif" />
+    <Content Include="CSS\Images\loader.gif" />
+    <Content Include="CSS\Images\Message_Error.png" />
+    <Content Include="CSS\Images\Message_Information.png" />
+    <Content Include="CSS\Images\Message_Success.png" />
+    <Content Include="CSS\Images\Message_Warning.png" />
+    <Content Include="CSS\Images\Progressbar_Content.gif" />
+    <Content Include="CSS\Images\Progressbar_Wrapper.gif" />
+    <Content Include="CSS\Images\question.gif" />
+    <Content Include="CSS\Images\setaValidation.png" />
+    <Content Include="CSS\Images\ui-bg_diagonals-thick_90_eeeeee_40x40.png" />
+    <Content Include="CSS\Images\ui-bg_flat_15_cd0a0a_40x100.png" />
+    <Content Include="CSS\Images\ui-bg_glass_100_e4f1fb_1x400.png" />
+    <Content Include="CSS\Images\ui-bg_glass_50_3baae3_1x400.png" />
+    <Content Include="CSS\Images\ui-bg_glass_80_d7ebf9_1x400.png" />
+    <Content Include="CSS\Images\ui-bg_highlight-hard_100_f2f5f7_1x100.png" />
+    <Content Include="CSS\Images\ui-bg_highlight-hard_70_000000_1x100.png" />
+    <Content Include="CSS\Images\ui-bg_highlight-soft_100_deedf7_1x100.png" />
+    <Content Include="CSS\Images\ui-bg_highlight-soft_25_ffef8f_1x100.png" />
+    <Content Include="CSS\Images\ui-icons_2694e8_256x240.png" />
+    <Content Include="CSS\Images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="CSS\Images\ui-icons_3d80b3_256x240.png" />
+    <Content Include="CSS\Images\ui-icons_72a7cf_256x240.png" />
+    <Content Include="CSS\Images\ui-icons_ffffff_256x240.png" />
+    <Content Include="CSS\Images\warning.gif" />
+    <Content Include="CSS\jquery-ui-1.8.21.custom.css" />
+    <Content Include="CSS\jquery.jgrowl.css" />
+    <Content Include="CSS\Luciano.css" />
+    <Content Include="Default.aspx" />
+    <Content Include="Default3.aspx" />
+    <Content Include="HTMLPage.htm" />
+    <Content Include="img\loading.gif" />
+    <Content Include="img\progressbar.gif" />
+    <Content Include="JavaScriptControle\jquery-1.7.2.min.js" />
+    <Content Include="JavaScriptControle\jquery-ui-1.8.20.custom.min.js" />
+    <Content Include="JavaScriptControle\jquery-ui-timepicker-addon.js" />
+    <Content Include="JavaScriptControle\jquery.additional-methods.js" />
+    <Content Include="JavaScriptControle\jquery.inputmask.date.extentions.js" />
+    <Content Include="JavaScriptControle\jquery.inputmask.extentions.js" />
+    <Content Include="JavaScriptControle\jquery.inputmask.js" />
+    <Content Include="JavaScriptControle\jquery.inputmask.numeric.extentions.js" />
+    <Content Include="JavaScriptControle\jquery.metadata.js" />
+    <Content Include="JavaScriptControle\jquery.searchabledropdown-1.0.7.src.js" />
+    <Content Include="JavaScriptControle\jquery.validate.js" />
+    <Content Include="JavaScriptControle\Mask.Techbiz.TTextBox.Mask.js" />
+    <Content Include="JavaScriptControle\Mask.Techbiz.TTextBox.Mask.Number.js" />
+    <Content Include="JavaScriptControle\Message.jquery.jgrowl.js" />
+    <Content Include="JavaScriptControle\MultSelect.Techbiz.jquery.multiSelectControl.js" />
+    <Content Include="JavaScriptControle\TechBiz.fieldValueValidate.js" />
+    <Content Include="JavaScriptControle\TechBiz.formatInputs.js" />
+    <Content Include="JavaScriptControle\Techbiz.js" />
+    <Content Include="JavaScriptControle\Techbiz.Mask.DateTime.js" />
+    <Content Include="JavaScriptControle\TechBiz.messageBox.js" />
+    <Content Include="JavaScriptControle\TechBiz.stringUtils.js" />
+    <Content Include="JavaScriptControle\TechBiz.textAreaControl.js" />
+    <Content Include="JavaScriptControle\Validations.TechBiz.jquery.fieldValidationServer.js" />
+    <Content Include="JavaScript\jquery-1.7.2.min.js" />
+    <Content Include="JavaScript\jquery-ui-1.8.20.custom.min.js" />
+    <Content Include="JavaScript\jquery-ui-1.8.21.custom.css" />
+    <Content Include="JavaScript\jquery.dataTables.js" />
+    <Content Include="JavaScript\jquery.flash.js" />
+    <Content Include="JavaScript\jquery.jqUploader.js" />
+    <Content Include="JavaScript\jquery.livequery.min.js" />
+    <Content Include="JavaScript\jquery.metadata.js" />
+    <Content Include="JavaScript\jquery.tmpl.min.js" />
+    <Content Include="JavaScript\jquery.tmplPlus.min.js" />
+    <Content Include="JavaScript\JqueryValidation\additional-methods.js" />
+    <Content Include="JavaScript\JqueryValidation\jquery.validate.js" />
+    <Content Include="JavaScript\TechBiz.jquery.onDemandStartup.js" />
+    <Content Include="jQuery-Custom-File-Input-master\css\basic.css" />
+    <Content Include="jQuery-Custom-File-Input-master\css\enhanced.css" />
+    <Content Include="jQuery-Custom-File-Input-master\images\bg-btn.png" />
+    <Content Include="jQuery-Custom-File-Input-master\images\bg-submit.gif" />
+    <Content Include="jQuery-Custom-File-Input-master\images\icon-generic.gif" />
+    <Content Include="jQuery-Custom-File-Input-master\images\icon-image.gif" />
+    <Content Include="jQuery-Custom-File-Input-master\images\icon-media.gif" />
+    <Content Include="jQuery-Custom-File-Input-master\images\icon-zip.gif" />
+    <Content Include="jQuery-Custom-File-Input-master\index.html" />
+    <Content Include="jQuery-Custom-File-Input-master\js\example.js" />
+    <Content Include="jQuery-Custom-File-Input-master\js\jQuery.fileinput.js" />
+    <Content Include="jQuery-Custom-File-Input-master\license.txt" />
+    <Content Include="jQuery-Custom-File-Input-master\WebForm1.aspx" />
+    <Content Include="jQuery-File-Upload-master\index.html" />
+    <Content Include="jQuery-File-Upload-master\server\gae-go\static\favicon.ico" />
+    <Content Include="jQuery-File-Upload-master\server\gae-go\static\robots.txt" />
+    <Content Include="jQuery-File-Upload-master\server\gae-python\static\favicon.ico" />
+    <Content Include="jQuery-File-Upload-master\server\gae-python\static\robots.txt" />
+    <Content Include="jQuery-File-Upload-master\server\node\server.js" />
+    <Content Include="jQuery-File-Upload-master\test\index.html" />
+    <Content Include="jQuery-File-Upload-master\test\test.js" />
+    <Content Include="jquery.simplemodal-1.4.2.js" />
+    <Content Include="jqUploader.swf" />
+    <Content Include="js\cors\jquery.postmessage-transport.js" />
+    <Content Include="js\cors\jquery.xdr-transport.js" />
+    <Content Include="JavaScript\jquery.fileupload-fp.js" />
+    <Content Include="JavaScript\jquery.fileupload-ui.js" />
+    <Content Include="JavaScript\jquery.fileupload.js" />
+    <Content Include="JavaScript\jquery.iframe-transport.js" />
+    <Content Include="JavaScript\main.js" />
+    <Content Include="JavaScript\jquery.ui.widget.js" />
+    <Content Include="ligthBox\images\blank.gif" />
+    <Content Include="ligthBox\images\close_black.png" />
+    <Content Include="ligthBox\images\close_blue.png" />
+    <Content Include="ligthBox\images\close_gold.png" />
+    <Content Include="ligthBox\images\close_green.png" />
+    <Content Include="ligthBox\images\close_grey.png" />
+    <Content Include="ligthBox\images\close_orange.png" />
+    <Content Include="ligthBox\images\close_red.png" />
+    <Content Include="ligthBox\images\error.png" />
+    <Content Include="ligthBox\images\help.png" />
+    <Content Include="ligthBox\images\info.png" />
+    <Content Include="ligthBox\images\loading_black.gif" />
+    <Content Include="ligthBox\images\loading_white.gif" />
+    <Content Include="ligthBox\images\next_black.png" />
+    <Content Include="ligthBox\images\next_black_off.png" />
+    <Content Include="ligthBox\images\next_black_t.png" />
+    <Content Include="ligthBox\images\next_blue.png" />
+    <Content Include="ligthBox\images\next_blue_off.png" />
+    <Content Include="ligthBox\images\next_blue_t.png" />
+    <Content Include="ligthBox\images\next_gold.png" />
+    <Content Include="ligthBox\images\next_gold_off.png" />
+    <Content Include="ligthBox\images\next_gold_t.png" />
+    <Content Include="ligthBox\images\next_green.png" />
+    <Content Include="ligthBox\images\next_green_off.png" />
+    <Content Include="ligthBox\images\next_green_t.png" />
+    <Content Include="ligthBox\images\next_grey.png" />
+    <Content Include="ligthBox\images\next_grey_off.png" />
+    <Content Include="ligthBox\images\next_grey_t.png" />
+    <Content Include="ligthBox\images\next_orange.png" />
+    <Content Include="ligthBox\images\next_orange_off.png" />
+    <Content Include="ligthBox\images\next_orange_t.png" />
+    <Content Include="ligthBox\images\next_red.png" />
+    <Content Include="ligthBox\images\next_red_off.png" />
+    <Content Include="ligthBox\images\next_red_t.png" />
+    <Content Include="ligthBox\images\pause_black.png" />
+    <Content Include="ligthBox\images\pause_blue.png" />
+    <Content Include="ligthBox\images\pause_gold.png" />
+    <Content Include="ligthBox\images\pause_green.png" />
+    <Content Include="ligthBox\images\pause_grey.png" />
+    <Content Include="ligthBox\images\pause_orange.png" />
+    <Content Include="ligthBox\images\pause_red.png" />
+    <Content Include="ligthBox\images\play_black.png" />
+    <Content Include="ligthBox\images\play_blue.png" />
+    <Content Include="ligthBox\images\play_gold.png" />
+    <Content Include="ligthBox\images\play_green.png" />
+    <Content Include="ligthBox\images\play_grey.png" />
+    <Content Include="ligthBox\images\play_orange.png" />
+    <Content Include="ligthBox\images\play_red.png" />
+    <Content Include="ligthBox\images\prev_black.png" />
+    <Content Include="ligthBox\images\prev_black_off.png" />
+    <Content Include="ligthBox\images\prev_black_t.png" />
+    <Content Include="ligthBox\images\prev_blue.png" />
+    <Content Include="ligthBox\images\prev_blue_off.png" />
+    <Content Include="ligthBox\images\prev_blue_t.png" />
+    <Content Include="ligthBox\images\prev_gold.png" />
+    <Content Include="ligthBox\images\prev_gold_off.png" />
+    <Content Include="ligthBox\images\prev_gold_t.png" />
+    <Content Include="ligthBox\images\prev_green.png" />
+    <Content Include="ligthBox\images\prev_green_off.png" />
+    <Content Include="ligthBox\images\prev_green_t.png" />
+    <Content Include="ligthBox\images\prev_grey.png" />
+    <Content Include="ligthBox\images\prev_grey_off.png" />
+    <Content Include="ligthBox\images\prev_grey_t.png" />
+    <Content Include="ligthBox\images\prev_orange.png" />
+    <Content Include="ligthBox\images\prev_orange_off.png" />
+    <Content Include="ligthBox\images\prev_orange_t.png" />
+    <Content Include="ligthBox\images\prev_red.png" />
+    <Content Include="ligthBox\images\prev_red_off.png" />
+    <Content Include="ligthBox\images\prev_red_t.png" />
+    <Content Include="ligthBox\images\print_black.png" />
+    <Content Include="ligthBox\images\print_blue.png" />
+    <Content Include="ligthBox\images\print_gold.png" />
+    <Content Include="ligthBox\images\print_green.png" />
+    <Content Include="ligthBox\images\print_grey.png" />
+    <Content Include="ligthBox\images\print_orange.png" />
+    <Content Include="ligthBox\images\print_red.png" />
+    <Content Include="ligthBox\images\warning.png" />
+    <Content Include="ligthBox\lytebox.css" />
+    <Content Include="ligthBox\lytebox.js" />
+    <Content Include="Mascaras.aspx" />
+    <Content Include="Messages.aspx" />
+    <Content Include="page.htm" />
+    <Content Include="server\gae-go\static\favicon.ico" />
+    <Content Include="server\gae-go\static\robots.txt" />
+    <Content Include="server\gae-python\static\favicon.ico" />
+    <Content Include="server\gae-python\static\robots.txt" />
+    <Content Include="server\node\server.js" />
+    <Content Include="TbizModal\pg.aspx" />
+    <Content Include="TbizModal\Popup.aspx" />
+    <Content Include="Serialize.aspx" />
+    <Content Include="test\index.html" />
+    <Content Include="test\test.js" />
+    <Content Include="UploadFile.aspx" />
+    <Content Include="Validators.aspx" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Buttons.aspx.cs">
+      <DependentUpon>Buttons.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Buttons.aspx.designer.cs">
+      <DependentUpon>Buttons.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default3.aspx.cs">
+      <DependentUpon>Default3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Download.aspx.cs">
+      <DependentUpon>Download.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Download.aspx.designer.cs">
+      <DependentUpon>Download.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DropdownListValidation.aspx.cs">
+      <DependentUpon>DropdownListValidation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DropdownListValidation.aspx.designer.cs">
+      <DependentUpon>DropdownListValidation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FileUpload.ashx.cs">
+      <DependentUpon>FileUpload.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Grid\hn.ashx.cs">
+      <DependentUpon>hn.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Grid\WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Grid\WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="jQuery-Custom-File-Input-master\WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="jQuery-Custom-File-Input-master\WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mascaras.aspx.cs">
+      <DependentUpon>Mascaras.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Messages.aspx.cs">
+      <DependentUpon>Messages.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TbizModal\pg.aspx.cs">
+      <DependentUpon>pg.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TbizModal\pg.aspx.designer.cs">
+      <DependentUpon>pg.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TbizModal\Popup.aspx.cs">
+      <DependentUpon>Popup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Serialize.aspx.cs">
+      <DependentUpon>Serialize.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UploadDetail.cs" />
+    <Compile Include="UploadFile.aspx.cs">
+      <DependentUpon>UploadFile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UploadFile.aspx.designer.cs">
+      <DependentUpon>UploadFile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UploadSession.ashx.cs">
+      <DependentUpon>UploadSession.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Validators.aspx.cs">
+      <DependentUpon>Validators.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Validators.aspx.designer.cs">
+      <DependentUpon>Validators.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="FileUpload.ashx" />
+    <Content Include="Grid\hn.ashx" />
+    <None Include="CSS\Images\Thumbs.db" />
+    <None Include="jQuery-Custom-File-Input-master\README.md" />
+    <None Include="jQuery-File-Upload-master\.gitignore" />
+    <None Include="jQuery-File-Upload-master\CONTRIBUTING.md" />
+    <None Include="jQuery-File-Upload-master\package.json" />
+    <None Include="jQuery-File-Upload-master\README.md" />
+    <None Include="jQuery-File-Upload-master\server\gae-go\app.yaml" />
+    <None Include="jQuery-File-Upload-master\server\gae-go\app\main.go" />
+    <None Include="jQuery-File-Upload-master\server\gae-python\app.yaml" />
+    <None Include="jQuery-File-Upload-master\server\gae-python\main.py" />
+    <None Include="jQuery-File-Upload-master\server\node\.gitignore" />
+    <None Include="jQuery-File-Upload-master\server\node\package.json" />
+    <None Include="jQuery-File-Upload-master\server\node\public\files\thumbnail\.gitignore" />
+    <None Include="jQuery-File-Upload-master\server\node\tmp\.gitignore" />
+    <None Include="jQuery-File-Upload-master\server\php\files\.htaccess" />
+    <None Include="jQuery-File-Upload-master\server\php\index.php" />
+    <None Include="jQuery-File-Upload-master\server\php\UploadHandler.php" />
+    <None Include="server\gae-go\app.yaml" />
+    <None Include="server\gae-go\app\main.go" />
+    <None Include="server\gae-python\app.yaml" />
+    <None Include="server\gae-python\main.py" />
+    <None Include="server\node\.gitignore" />
+    <None Include="server\node\package.json" />
+    <None Include="server\node\public\files\thumbnail\.gitignore" />
+    <None Include="server\node\tmp\.gitignore" />
+    <None Include="server\php\files\.htaccess" />
+    <None Include="server\php\index.php" />
+    <None Include="server\php\UploadHandler.php" />
+    <Content Include="UploadSession.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TAjaxGrid\Arquitetura.Web.WebControls.Grid.csproj">
+      <Project>{C1F4D417-0BA7-48CF-B230-5E01C22C095A}</Project>
+      <Name>Arquitetura.Web.WebControls.Grid</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TWebControls\TWebControls.csproj">
+      <Project>{06F375BF-BF92-434F-A582-5A7AB2CC671C}</Project>
+      <Name>TWebControls</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="js\vendor\" />
+    <Folder Include="NewFolder1\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>2089</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

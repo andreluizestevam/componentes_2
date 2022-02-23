@@ -1,0 +1,586 @@
+﻿using System;
+using System.Collections;
+using System.ComponentModel;
+using System.Linq;
+using System.Linq.Expressions;
+using System.Reflection;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using Arquitetura.TechBiz.BS;
+using Arquitetura.TechBiz.Utils;
+
+namespace Arquitetura.Web.WebControls
+{
+    /// <summary>
+    /// Componente que customiza o GridView.
+    /// </summary>
+    [ToolboxData("<{0}:TGridView runat=\"server\"></{0}:TGridView>")]
+    public sealed class TGridView : GridView
+    {
+        #region Atributos
+
+        /// <summary>
+        /// Atributo para reflection do método interno do GridView
+        /// </summary>
+        private MethodInfo _methodInfo = typeof(GridView).GetMethod("BuildCallbackArgument", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.CreateInstance, null, new Type[] { typeof(int) }, null);
+
+        /// <summary>
+        /// Atributo para reflection de atributo interno do GridView
+        /// </summary>
+        private FieldInfo _fieldInfo1 = typeof(DataBoundControl).GetField("_currentDataSource", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.CreateInstance);
+
+        /// <summary>
+        /// Atributo para reflection de atributo interno do GridView
+        /// </summary>
+        private FieldInfo _fieldInfo2 = typeof(DataBoundControl).GetField("_currentView", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.CreateInstance);
+
+        /// <summary>
+        /// Atributo para reflection de atributo interno do GridView
+        /// </summary>
+        private FieldInfo _fieldInfo3 = typeof(DataBoundControl).GetField("_currentViewValid", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.CreateInstance);
+
+        #endregion
+
+        #region Propriedades
+
+        /// <summary>
+        /// Propriedade para habilitar cache da fonte de dados.
+        /// </summary>
+        [Browsable(true)]
+        [Category("Behavior")]
+        [DefaultValue(false)]
+        private bool EnableCaching
+        {
+            get
+            {
+                if (this.ViewState["_!EnableCaching"] == null)
+                {
+                    this.ViewState["_!EnableCaching"] = false;
+                }
+                return Convert.ToBoolean(this.ViewState["_!EnableCaching"]);
+            }
+            set { this.ViewState["_!EnableCaching"] = value; }
+        }
+
+        /// <summary>
+        /// Propriedade para a fonte de dados
+        /// </summary>
+        [Browsable(true)]
+        [Category("Data")]
+        [DefaultValue("")]
+        public override object DataSource
+        {
+            get
+            {
+                if (this.EnableCaching)
+                {
+                    base.DataSource = this.ViewState["_!DataSource"];
+                }
+                return base.DataSource;
+            }
+            set
+            {
+                if (this.EnableCaching)
+                {
+                    this.ViewState["_!DataSource"] = value;
+                }
+                base.DataSource = value;
+            }
+        }
+
+        /// <summary>
+        /// Propriedade para expressão da ordenação
+        /// </summary>
+        [Browsable(false)]
+        public new string SortExpression
+        {
+            get { return Convert.ToString(this.ViewState["_!SortExpression"]); }
+            private set { this.ViewState["_!SortExpression"] = value; }
+        }
+
+        /// <summary>
+        /// propriedade para orientação da ordenação
+        /// </summary>
+        [Browsable(false)]
+        [DefaultValue(SortDirection.Ascending)]
+        public new SortDirection SortDirection
+        {
+            get
+            {
+                if (this.ViewState["_!SortDirection"] == null)
+                {
+                    this.ViewState["_!SortDirection"] = SortDirection.Ascending;
+                }
+
+                return (SortDirection)this.ViewState["_!SortDirection"];
+            }
+            private set { this.ViewState["_!SortDirection"] = value; }
+        }
+
+        /// <summary>
+        /// Propriedade para modo da paginação customizado
+        /// </summary>
+        [Browsable(true)]
+        [Category("Paging")]
+        [DefaultValue(TPagerButtons.NumericNextPrevious)]
+        public TPagerButtons CustomPagerMode
+        {
+            get
+            {
+                if (this.ViewState["_!CustomPagerMode"] == null)
+                {
+                    this.PagerSettings.Mode = PagerButtons.Numeric;
+                    this.ViewState["_!CustomPagerMode"] = TPagerButtons.NumericNextPrevious;
+                }
+
+                return (TPagerButtons)this.ViewState["_!CustomPagerMode"];
+            }
+            set
+            {
+                this.ViewState["_!CustomPagerMode"] = value;
+
+                if (value == TPagerButtons.NextPrevious
+                    || value == TPagerButtons.Numeric
+                    || value == TPagerButtons.NextPreviousFirstLast
+                    || value == TPagerButtons.NumericFirstLast)
+                {
+                    this.PagerSettings.Mode = (PagerButtons)EnumUtil.GetValor(value);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Propriedade para habilitar a exibição de grupos (...) da paginação
+        /// </summary>
+        [Browsable(true)]
+        [Category("Paging")]
+        [DefaultValue(true)]
+        public bool CustomPagerShowDots
+        {
+            get
+            {
+                if (this.ViewState["_!CustomPagerShowDots"] == null)
+                {
+                    this.ViewState["_!CustomPagerShowDots"] = true;
+                }
+
+                return (bool)this.ViewState["_!CustomPagerShowDots"];
+            }
+            set { this.ViewState["_!CustomPagerShowDots"] = value; }
+        }
+
+        #endregion
+
+        #region Metodos
+
+        #region Paginação
+
+        /// <summary>
+        /// Evento de paginação
+        /// </summary>
+        /// <param name="e">O evento.</param>
+        protected override void OnPageIndexChanging(GridViewPageEventArgs e)
+        {
+            DataSourceView view = this.GetData();
+
+            if (view.CanPage)
+            {
+                base.OnPageIndexChanging(e);
+
+                return;
+            }
+
+            this.PageIndex = e.NewPageIndex;
+
+            if (!view.CanRetrieveTotalRowCount)
+            {
+                this.DataBind();
+            }
+        }
+
+        /// <summary>
+        /// Método de customização de paginação
+        /// </summary>
+        /// <param name="row">A coluna</param>
+        /// <param name="columnSpan">O índice</param>
+        /// <param name="pagedDataSource">O datasource paginado</param>
+        protected override void InitializePager(GridViewRow row, int columnSpan, PagedDataSource pagedDataSource)
+        {
+            if (this.CustomPagerMode == TPagerButtons.NumericNextPrevious)
+            {
+                base.InitializePager(row, columnSpan, pagedDataSource);
+
+                this.CreateNumericNextPrev(row, pagedDataSource);
+            }
+            else if (this.CustomPagerMode == TPagerButtons.NumericNextPreviousFirstLast)
+            {
+                base.InitializePager(row, columnSpan, pagedDataSource);
+
+                this.CreateNumericNextPrevFirstLast(row, pagedDataSource);
+            }
+            else
+            {
+                base.InitializePager(row, columnSpan, pagedDataSource);
+            }
+
+            this.CheckPagerDots(row, pagedDataSource);
+        }
+
+        /// <summary>
+        /// Método que customiza a paginação para retirar o dots
+        /// </summary>
+        /// <param name="row">A linha do GridView</param>
+        /// <param name="pagedDataSource">A fonte de dados paginada.</param>
+        private void CheckPagerDots(GridViewRow row, PagedDataSource pagedDataSource)
+        {
+            if ((this.CustomPagerMode == TPagerButtons.Numeric
+                || this.CustomPagerMode == TPagerButtons.NumericFirstLast
+                || this.CustomPagerMode == TPagerButtons.NumericNextPrevious
+                || this.CustomPagerMode == TPagerButtons.NumericNextPreviousFirstLast)
+                && !this.CustomPagerShowDots)
+            {
+                int indexStart = 0;
+                int indexLast = 0;
+
+                switch (this.CustomPagerMode)
+                {
+                    case TPagerButtons.Numeric:
+                        {
+                            indexStart = 0;
+                            indexLast = row.Cells[0].Controls[0].Controls[0].Controls.Count - 1;
+                            break;
+                        }
+                    case TPagerButtons.NumericFirstLast:
+                    case TPagerButtons.NumericNextPrevious:
+                        {
+                            indexStart = 1;
+                            indexLast = row.Cells[0].Controls[0].Controls[0].Controls.Count - 2;
+                            break;
+                        }
+                    case TPagerButtons.NumericNextPreviousFirstLast:
+                        {
+                            indexStart = 2;
+                            indexLast = row.Cells[0].Controls[0].Controls[0].Controls.Count - 3;
+                            break;
+                        }
+                }
+
+                if (!pagedDataSource.IsFirstPage
+                    && string.Equals(((LinkButton)row.Cells[0].Controls[0].Controls[0].Controls[indexStart].Controls[0]).Text, "..."))
+                {
+                    row.Cells[0].Controls[0].Controls[0].Controls[indexStart].Visible = false;
+                }
+
+                if (!pagedDataSource.IsLastPage
+                    && string.Equals(((LinkButton)row.Cells[0].Controls[0].Controls[0].Controls[indexLast].Controls[0]).Text, "..."))
+                {
+                    row.Cells[0].Controls[0].Controls[0].Controls[indexLast].Visible = false;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Método que customização a paginação para primeiro, anterior, numeros, próximo e último
+        /// </summary>
+        /// <param name="row">A linha do GridView</param>
+        /// <param name="pagedDataSource">A fonte de dados paginada.</param>
+        private void CreateNumericNextPrevFirstLast(GridViewRow row, PagedDataSource pagedDataSource)
+        {
+            if (!pagedDataSource.IsFirstPage)
+            {
+                TableCell cell1 = this.CreateCustomPager(this.PagerSettings.FirstPageImageUrl,
+                                                            this.PagerSettings.FirstPageText, "Page", "First", 0);
+
+                row.Cells[0].Controls[0].Controls[0].Controls.AddAt(0, cell1);
+
+                TableCell cell2 = this.CreateCustomPager(this.PagerSettings.PreviousPageImageUrl,
+                                                            this.PagerSettings.PreviousPageText, "Page", "Prev", pagedDataSource.CurrentPageIndex - 1);
+
+                row.Cells[0].Controls[0].Controls[0].Controls.AddAt(1, cell2);
+            }
+
+            if (!pagedDataSource.IsLastPage)
+            {
+                TableCell cell1 = this.CreateCustomPager(this.PagerSettings.NextPageImageUrl,
+                                                            this.PagerSettings.NextPageText, "Page", "Next", pagedDataSource.CurrentPageIndex + 1);
+
+                row.Cells[0].Controls[0].Controls[0].Controls.Add(cell1);
+
+                TableCell cell2 = this.CreateCustomPager(this.PagerSettings.LastPageImageUrl,
+                                                            this.PagerSettings.LastPageText, "Page", "Last", pagedDataSource.PageCount - 1);
+
+                row.Cells[0].Controls[0].Controls[0].Controls.Add(cell2);
+            }
+        }
+
+        /// <summary>
+        /// Método que customização a paginação para anterior, numeros e próximo.
+        /// </summary>
+        /// <param name="row">A linha do GridView</param>
+        /// <param name="pagedDataSource">A fonte de dados paginada.</param>
+        private void CreateNumericNextPrev(GridViewRow row, PagedDataSource pagedDataSource)
+        {
+            if (!pagedDataSource.IsFirstPage)
+            {
+                TableCell cell1 = this.CreateCustomPager(this.PagerSettings.PreviousPageImageUrl,
+                                                            this.PagerSettings.PreviousPageText, "Page", "Prev", pagedDataSource.CurrentPageIndex - 1);
+
+                row.Cells[0].Controls[0].Controls[0].Controls.AddAt(0, cell1);
+            }
+
+            if (!pagedDataSource.IsLastPage)
+            {
+                TableCell cell2 = this.CreateCustomPager(this.PagerSettings.NextPageImageUrl,
+                                                            this.PagerSettings.NextPageText, "Page", "Next", pagedDataSource.CurrentPageIndex + 1);
+
+                row.Cells[0].Controls[0].Controls[0].Controls.Add(cell2);
+            }
+        }
+
+        /// <summary>
+        /// Método que cria as células customizadas do gridview
+        /// </summary>
+        /// <param name="imageUrl">A url da imagem.</param>
+        /// <param name="text">O texto.</param>
+        /// <param name="commandName">O nome do comando.</param>
+        /// <param name="commandArgument">O argumento do comando.</param>
+        /// <returns>TableCell</returns>
+        private TableCell CreateCustomPager(string imageUrl, string text, string commandName, string commandArgument, int pageIndex)
+        {
+            IButtonControl control;
+            TableCell cell = new TableCell();
+
+            if (imageUrl.Length > 0)
+            {
+                control = new TDataControlImageButton(this);
+                ((TDataControlImageButton)control).ImageUrl = imageUrl;
+                ((TDataControlImageButton)control).AlternateText = HttpUtility.HtmlDecode(text);
+                ((TDataControlImageButton)control).EnableCallback(this.BuildCallbackArgument(pageIndex));
+            }
+            else
+            {
+                control = new TDataControlPagerLinkButton(this);
+                ((TDataControlPagerLinkButton)control).Text = text;
+                ((TDataControlPagerLinkButton)control).EnableCallback(this.BuildCallbackArgument(pageIndex));
+            }
+
+            control.CommandName = commandName;
+            control.CommandArgument = commandArgument;
+
+            cell.Controls.Add((Control)control);
+
+            return cell;
+        }
+
+        /// <summary>
+        /// Método que cria os scripts callback
+        /// </summary>
+        /// <param name="pageIndex">O índice da página</param>
+        /// <returns>string</returns>
+        private string BuildCallbackArgument(int pageIndex)
+        {
+            return _methodInfo.Invoke(this, new object[] { pageIndex }).ToString();
+        }
+
+        #endregion
+
+        #region Ordenação
+
+        /// <summary>
+        /// Evento de ordenação
+        /// </summary>
+        /// <param name="e">O evento.</param>
+        protected override void OnSorting(GridViewSortEventArgs e)
+        {
+            DataSourceView view = this.GetData();
+
+            if (view.CanSort)
+            {
+                base.OnSorting(e);
+
+                return;
+            }
+
+            if (this.DataSource == null)
+            {
+                return;
+            }
+
+            if (string.IsNullOrEmpty(this.SortExpression)
+                && string.IsNullOrEmpty(e.SortExpression))
+            {
+                return;
+            }
+
+            if (string.Equals(this.SortExpression, e.SortExpression))
+            {
+                this.SortDirection = (this.SortDirection == SortDirection.Ascending)
+                                       ? SortDirection.Descending
+                                       : SortDirection.Ascending;
+            }
+            else
+            {
+                this.SortExpression = e.SortExpression;
+                this.SortDirection = e.SortDirection;
+            }
+
+            IEnumerable list = (IEnumerable)this.DataSource;
+
+            IEnumerable result = null;
+
+            if (this.SortDirection == SortDirection.Ascending)
+            {
+                result = this.ApplyOrder(list, this.SortExpression, "OrderBy");
+            }
+            else
+            {
+                result = this.ApplyOrder(list, this.SortExpression, "OrderByDescending");
+            }
+
+            this.DataSource = result;
+
+            if (!view.CanRetrieveTotalRowCount)
+            {
+                this.DataBind();
+            }
+        }
+
+        /// <summary>
+        /// Método que aplica dinamicamente a ordenação
+        /// </summary>
+        /// <typeparam name="T">O tipo do parametro</typeparam>
+        /// <param name="source">A fonte de dados</param>
+        /// <param name="propertyName">O nome da propriedade</param>
+        /// <param name="methodName">O nome do método de ordenação</param>
+        /// <returns>IEnumerable_T</returns>
+        private IEnumerable ApplyOrder(IEnumerable source, string propertyName, string methodName)
+        {
+            Type type = Util.GetTypeFirstItem(source);
+
+            if (type == null)
+            {
+                return null;
+            }
+
+            string[] pNames = propertyName.Split('.');
+
+            ParameterExpression argument = Expression.Parameter(type, "p");
+
+            Expression expDepth = argument;
+
+            Type typeDepth = type;
+
+            foreach (string pName in pNames)
+            {
+                PropertyInfo pInfo = typeDepth.GetProperty(pName);
+
+                expDepth = Expression.Property(expDepth, pInfo);
+
+                typeDepth = pInfo.PropertyType;
+            }
+
+            Type delegateType = typeof(Func<,>).MakeGenericType(type, typeDepth);
+
+            LambdaExpression lambda = Expression.Lambda(delegateType, expDepth, argument);
+
+            MethodInfo mInfo1 = typeof(Enumerable).GetMethods().Single(method => method.Name == methodName
+                                                                        && method.IsGenericMethodDefinition
+                                                                        && method.GetGenericArguments().Length == 2
+                                                                        && method.GetParameters().Length == 2);
+            mInfo1 = mInfo1.MakeGenericMethod(type, typeDepth);
+
+            IEnumerable result1 = (IEnumerable)mInfo1.Invoke(null, new object[] { source, lambda.Compile() });
+
+            MethodInfo mInfo2 = typeof(Enumerable).GetMethods().Single(method => method.Name == "ToList"
+                                                                        && method.IsGenericMethodDefinition);
+            mInfo2 = mInfo2.MakeGenericMethod(type);
+
+            IEnumerable result2 = (IEnumerable)mInfo2.Invoke(null, new object[] { result1 });
+
+            return result2;
+        }
+
+        #endregion
+
+        #region BusinessService
+
+        /// <summary>
+        /// Método que recuperar a visão da fonte de dados
+        /// </summary>
+        /// <returns>DataSourceView</returns>
+        protected override DataSourceView GetData()
+        {
+            if ((this.DataSource != null) && (this.DataSource is BusinessService))
+            {
+                BusinessService bService = (BusinessService)this.DataSource;
+                TBusinessServiceDataSource bsDataSource = new TBusinessServiceDataSource(bService);
+                TBusinessServiceDataSourceView bsDataSourceView = new TBusinessServiceDataSourceView(bsDataSource, bService.Vos);
+
+                //this._fieldInfo1.SetValue(this, bsDataSource);
+                //this._fieldInfo2.SetValue(this, bsDataSourceView);
+                //this._fieldInfo3.SetValue(this, true);
+
+                return bsDataSourceView;
+            }
+
+            return base.GetData();
+        }
+
+        /// <summary>
+        /// Método que valida a fonte de dados
+        /// </summary>
+        /// <param name="dataSource">O data source</param>
+        protected override void ValidateDataSource(object dataSource)
+        {
+            if ((dataSource != null) && (dataSource is BusinessService))
+            {
+                BusinessService bService = (BusinessService)dataSource;
+
+                if (bService.Options.Paging.ItemsCount > 0
+                    && bService.Options.Paging.PageCount > 0
+                    && bService.Options.Paging.PageSize > 0)
+                {
+                    int countReturn = bService.Vos.Count;
+                    int countTotal = bService.Options.Paging.ItemsCount;
+
+                    if (countReturn >= countTotal)
+                    {
+                        throw new InvalidOperationException("Erro. A quantidade de itens retornados deve ser menor ou igual a quantidade de itens totalizados.");
+                    }
+
+                    int pageIndex = bService.Options.Paging.PageIndex;
+                    int pageSize = bService.Options.Paging.PageSize;
+                    int countDescarded = (pageIndex * pageSize) + countReturn;
+
+                    if (countDescarded > countTotal)
+                    {
+                        throw new InvalidOperationException("Erro. A quantidade de itens retornados somado aos itens descartados, das páginas anteriores, deve ser menor ou igual a quantidade de itens totalizados.");
+                    }
+
+                    int countPage = bService.Options.Paging.PageCount;
+                    int countTotalPage = (int)Math.Ceiling((decimal)countTotal / (decimal)pageSize);
+
+                    if (countPage != countTotalPage)
+                    {
+                        throw new InvalidOperationException("Erro. A quantidade de paginas retornadas deve ser igual a quantidade de páginas dos itens totalizados.");
+                    }
+
+                    if (bService.Options.Paging.PageIndex > 0
+                        && this.PageIndex <= 0)
+                    {
+                        this.PageIndex = bService.Options.Paging.PageIndex;
+                    }
+                }
+
+                return;
+            }
+
+            base.ValidateDataSource(dataSource);
+        }
+
+        #endregion
+
+        #endregion
+    }
+}

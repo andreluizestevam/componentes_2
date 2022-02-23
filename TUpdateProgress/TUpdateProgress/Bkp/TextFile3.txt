@@ -1,0 +1,53 @@
+﻿Type.registerNamespace("Arquitetura.Web.WebControls");
+
+//criando construtor
+Arquitetura.Web.WebControls.TUpdateProgress = function (element) {
+    Arquitetura.Web.WebControls.TUpdateProgress.initializeBase(this, [element]);
+    this._id = element.id;
+}
+
+//definindo classe
+Arquitetura.Web.WebControls.TUpdateProgress.prototype = {
+    initialize: function () {
+        // initialize
+        Arquitetura.Web.WebControls.TUpdateProgress.callBaseMethod(this, 'initialize');
+
+        // initializa global event
+        with (Sys.WebForms.PageRequestManager.getInstance()) {
+            add_initializeRequest(this._onInitializeRequest);
+            add_beginRequest(this._onBeginRequest);
+            add_endRequest(this._onEndRequest);
+        }
+    },
+    dispose: function () {
+        $clearHandlers(this.get_element());
+        Arquitetura.Web.WebControls.TUpdateProgress.callBaseMethod(this, 'dispose');
+    },
+    //evento
+    _onInitializeRequest: function (sender, args) {
+        var prm = Sys.WebForms.PageRequestManager.getInstance();
+
+        if (prm.get_isInAsyncPostBack()) {
+            prm.abortPostBack();
+            args.set_cancel(true);
+        }
+        window.status = this._id;
+        //this.get_element().style.display = 'none';
+    },
+    //evento
+    _onBeginRequest: function (sender, args) {
+        this.get_element().style.display = 'block';
+    },
+    //evento
+    _onEndRequest: function (sender, args) {
+        //this.get_element().style.display = 'none';
+    }
+}
+
+//register class as a Sys.Control
+Arquitetura.Web.WebControls.TUpdateProgress.registerClass('Arquitetura.Web.WebControls.TUpdateProgress', Sys.UI.Control);
+
+//notify loaded
+if (typeof (Sys) !== 'undefined') {
+    Sys.Application.notifyScriptLoaded();
+}

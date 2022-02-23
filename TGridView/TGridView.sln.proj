@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <BaseAddress>C:\Users\t004316471\Documents\Subversion\do-prti-tisi3\arquitetura\componentes\TGridView\</BaseAddress>
+    <DeployAddress>C:\Users\t004316471\Documents\Subversion\do-prti-tisi3\arquitetura\libraries\webcontrols\</DeployAddress>
+    <Configuration>DEBUG</Configuration>
+  </PropertyGroup>
+  <ItemGroup Condition="$(Configuration)=='DEBUG'">
+    <Folder Include="$(BaseAddress)/TGridView/bin/debug/*TGridView.dll"/>
+  </ItemGroup>
+  <ItemGroup Condition="$(Configuration)=='RELEASE'">
+    <Folder Include="$(BaseAddress)/TGridView/bin/release/*TGridView.dll"/>
+  </ItemGroup>
+  <Target Name="Build">
+    <Copy SourceFiles="@(Folder)" ContinueOnError="false" DestinationFolder="$(DeployAddress)" />
+  </Target>
+</Project>

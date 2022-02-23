@@ -1,0 +1,77 @@
+﻿// declaracao
+with (Sys.WebForms.PageRequestManager.getInstance()) {
+    add_initializeRequest(this._onInitializeRequest);
+    add_beginRequest(this._onBeginRequest);
+    add_endRequest(this._onEndRequest);
+}
+
+//evento
+function _onInitializeRequest(sender, args) {
+    var prm = Sys.WebForms.PageRequestManager.getInstance();
+
+    // se tiver em execução, cancela a execução
+    if (prm.get_isInAsyncPostBack()) {
+        prm.abortPostBack();
+        args.set_cancel(true);
+    }
+
+//    // recuperando progress
+//    var element = _getUpdateProgress();
+
+//    // configurando progress
+//    element.style.display = 'none';
+}
+
+//evento
+function _onBeginRequest(sender, args) {
+//    // recuperando viewport do cliente
+//    var viewportwidth;
+//    var viewportheight;
+
+//    // mozilla/netscape/opera/IE7
+//    if (typeof window.innerWidth != 'undefined') {
+//        viewportwidth = window.innerWidth,
+//        viewportheight = window.innerHeight
+//    }
+//    // IE6
+//    else if (typeof document.documentElement != 'undefined'
+//            && typeof document.documentElement.clientWidth != 'undefined'
+//            && document.documentElement.clientWidth != 0) {
+//        viewportwidth = document.documentElement.clientWidth,
+//        viewportheight = document.documentElement.clientHeight
+//    }
+//    // versão antigas IE6
+//    else {
+//        viewportwidth = document.getElementsByTagName('body')[0].clientWidth,
+//        viewportheight = document.getElementsByTagName('body')[0].clientHeight
+//    }
+
+    // recuperando progress
+    var element = $get("UpdateProgressTarget");
+
+    element.click();
+
+//    // configurando progress
+//    element.style.position = "absolute";
+//    element.style.left = "0px";
+//    element.style.top = "0px";
+//    element.style.width = viewportwidth;
+//    element.style.height = Sys.UI.DomElement.getBounds(document.forms[0]).height + 30;
+//    element.style.display = 'block';
+//    element.style.overflow = "hidden";
+}
+
+//evento
+function _onEndRequest(sender, args) {
+    // recuperando progress
+    var element = _getUpdateProgress();
+
+    // configurando progress
+    element.style.display = 'none';
+}
+
+// metodo
+function _getUpdateProgress() {
+    return $get("UpdateProgress");
+}
+

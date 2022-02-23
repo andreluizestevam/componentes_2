@@ -1,0 +1,67 @@
+﻿using System.Collections;
+using System.Web.UI;
+
+namespace Arquitetura.Web.WebControls
+{
+    internal sealed class TBusinessServiceDataSourceView : DataSourceView
+    {
+        #region Atributos
+
+        /// <summary>
+        /// Atributo da fonte de dados
+        /// </summary>
+        private IEnumerable _dataSource;
+
+        #endregion
+
+        #region Propriedades
+
+        /// <summary>
+        /// Propriedade se pode paginar
+        /// </summary>
+        public override bool CanPage
+        {
+            get { return true; }
+        }
+
+        /// <summary>
+        /// Propridade para verificar se pode recuperar a quantidade total de colunas
+        /// </summary>
+        public override bool CanRetrieveTotalRowCount
+        {
+            get { return base.CanRetrieveTotalRowCount; }
+        }
+
+        #endregion
+
+        #region Construtores
+
+        /// <summary>
+        /// Construtor padrão
+        /// </summary>
+        /// <param name="owner">O adaptador da fonte de dados</param>
+        /// <param name="name">O nome da propriedade</param>
+        /// <param name="dataSource">A fonte de dados</param>
+        public TBusinessServiceDataSourceView(TBusinessServiceDataSource owner, IEnumerable dataSource)
+            : base(owner, string.Empty)
+        {
+            this._dataSource = dataSource;
+        }
+
+        #endregion
+
+        #region Metodos
+
+        /// <summary>
+        /// Método que executa o select no datasource
+        /// </summary>
+        /// <param name="arguments">Os argumentos</param>
+        /// <returns>IEnumerable</returns>
+        protected override IEnumerable ExecuteSelect(DataSourceSelectArguments arguments)
+        {
+            return this._dataSource;
+        }
+
+        #endregion
+    }
+}

@@ -1,0 +1,65 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TWebControls", "TWebControls\TWebControls.csproj", "{06F375BF-BF92-434F-A582-5A7AB2CC671C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TesteAplication", "WebApplication1\TesteAplication.csproj", "{C35C4C70-5FC2-4A22-8B9A-88A920BDE693}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TGridView", "..\TGridView\TGridView\TGridView.csproj", "{02734455-0481-4139-9569-FB67062F5421}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TTabView", "..\TTabView\TTabView\TTabView.csproj", "{2D314706-0634-4EBB-A9FA-575335DBE91D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arquitetura.Web.WebControls.Grid", "TAjaxGrid\Arquitetura.Web.WebControls.Grid.csproj", "{C1F4D417-0BA7-48CF-B230-5E01C22C095A}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 6
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://10.31.0.21:8080/tfs/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = TWebControls\\TWebControls.csproj
+		SccProjectName1 = TWebControls
+		SccLocalPath1 = TWebControls
+		SccProjectUniqueName2 = ..\\TGridView\\TGridView\\TGridView.csproj
+		SccProjectName2 = ../TGridView/TGridView
+		SccLocalPath2 = ..\\TGridView\\TGridView
+		SccProjectUniqueName3 = WebApplication1\\TesteAplication.csproj
+		SccProjectName3 = WebApplication1
+		SccLocalPath3 = WebApplication1
+		SccProjectUniqueName4 = ..\\TTabView\\TTabView\\TTabView.csproj
+		SccProjectName4 = ../TTabView/TTabView
+		SccLocalPath4 = ..\\TTabView\\TTabView
+		SccProjectUniqueName5 = TAjaxGrid\\Arquitetura.Web.WebControls.Grid.csproj
+		SccProjectName5 = TAjaxGrid
+		SccLocalPath5 = TAjaxGrid
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{06F375BF-BF92-434F-A582-5A7AB2CC671C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06F375BF-BF92-434F-A582-5A7AB2CC671C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06F375BF-BF92-434F-A582-5A7AB2CC671C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06F375BF-BF92-434F-A582-5A7AB2CC671C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C35C4C70-5FC2-4A22-8B9A-88A920BDE693}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C35C4C70-5FC2-4A22-8B9A-88A920BDE693}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C35C4C70-5FC2-4A22-8B9A-88A920BDE693}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C35C4C70-5FC2-4A22-8B9A-88A920BDE693}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02734455-0481-4139-9569-FB67062F5421}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02734455-0481-4139-9569-FB67062F5421}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02734455-0481-4139-9569-FB67062F5421}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02734455-0481-4139-9569-FB67062F5421}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D314706-0634-4EBB-A9FA-575335DBE91D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D314706-0634-4EBB-A9FA-575335DBE91D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D314706-0634-4EBB-A9FA-575335DBE91D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D314706-0634-4EBB-A9FA-575335DBE91D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1F4D417-0BA7-48CF-B230-5E01C22C095A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1F4D417-0BA7-48CF-B230-5E01C22C095A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1F4D417-0BA7-48CF-B230-5E01C22C095A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1F4D417-0BA7-48CF-B230-5E01C22C095A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
